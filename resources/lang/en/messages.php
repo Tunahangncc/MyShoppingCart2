@@ -123,6 +123,11 @@ return[
             'message type' => 'Message Type',
             'message body' => 'Message Body',
             'send message' => 'Send Message',
+            'message type value' => [
+                'error message' => 'Error Message',
+                'warning message' => 'Warning Message',
+                'question message' => 'Question Message',
+            ],
         ],
     //----
 
@@ -158,7 +163,50 @@ return[
     //Profile
         'profile category text' => [
             'title' => 'Related Links',
-            
+            'edit profile' => 'Edit Profile',
+            'add product' => 'Add Product',
+            'edit product' => 'Edit Product',
+            'address' => 'Address',
+            'my products' => 'My Products',
+        ],
+
+        'profile card text' => [
+            'male' => 'Male',
+            'female' => 'Female',
+            'about me' => 'About Me',
+            'description' => 'For a better communication, you can tell us about yourself. Update your profile to fill this field',
+            'gender' => 'Gender',
+            'email' => 'E-Mail',
+            'my personal information' => 'My personal information',
+            'first name' => 'First Name',
+            'last name' => 'Last Name',
+            'phone number' => 'Phone Number',
+            'current address' => 'Current Address',
+            'not available' => 'Not Available',
+            'birthday' => 'Birthday',
+        ],
+    //----
+
+    //Profile Edit
+        'profile edit form text' => [
+            'email' => 'E-Mail',
+            'first name' => 'First Name',
+            'last name' => 'Last Name',
+            'old password' => 'Old Password',
+            'new password' => 'New Password',
+            'gender' => 'Gender',
+            'male' => 'Male',
+            'female' => 'Female',
+            'avatar image' => 'Avatar Image',
+            'select a avatar' => 'Select A Avatar',
+            'day' => 'Day',
+            'month' => 'Month',
+            'year' => 'Year',
+        ],
+
+        'profile address form text' => [
+            'city' => 'City',
+            'district' => 'District',
         ],
     //----
 ];

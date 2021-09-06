@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="short-information grid md:grid-cols-2 sm:grid-cols-1 items-center">
+        <div class="short-information items-center">
             <div class="flex justify-center">
                 <div class="show-world-store-description p-20 w-full md:w-1/2">
                     <img src="{{ asset('images/customer_images/general_images/about2.gif') }}" alt="" class="world-image rounded-t-lg transition duration-300">
@@ -60,10 +60,6 @@
 
                     </div>
                 </div>
-            </div>
-
-            <div>
-
             </div>
         </div>
     </div>

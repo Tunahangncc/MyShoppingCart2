@@ -1,0 +1,71 @@
+.profile-content-area{
+    height: 90vh;
+}
+
+.profile-categories{
+    display: flex;
+}
+
+.profile-categories .content{
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 1650px) {
+    .profile-content-area{
+        flex-direction: column;
+    }
+
+
+}
+
+@media (max-width: 1045px) {
+    .profile-card-area .container .container-content{
+        flex-direction: column;
+    }
+    .profile-card-area .container .container-content .left-area{
+        width: 100%;
+        margin: 0;
+    }
+    .profile-card-area .container .container-content .left-area-content{
+        padding: 10px;
+        margin-bottom: 25px;
+    }
+    .profile-card-area .container .container-content .right-area{
+        width: 100%;
+        margin: 0;
+    }
+    .profile-card-area .container .container-content .right-area-content{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-content-area{
+        height: 90vh;
+    }
+
+    .profile-categories .content .category-nav{
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 892px) {
+    .profile-content-area{
+        height: 220vh;
+    }
+    .footer-area{
+        margin-top: 160px;
+    }
+    .navbar-area{
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 420px) {
+    .profile-content-area{
+        height: 130vh;
+    }
+}
