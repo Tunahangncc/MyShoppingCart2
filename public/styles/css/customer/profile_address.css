@@ -1,0 +1,16 @@
+
+
+.profile-content-area .profile-address-form form button:hover i{
+    animation: profileEdit 0.5s;
+    animation-iteration-count: 1;
+}
+
+
+/*Animate*/
+@keyframes profileEdit {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}

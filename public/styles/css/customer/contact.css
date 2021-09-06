@@ -1,3 +1,10 @@
+.contact-area{
+    height:70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .selectMessageType{
     color: black;
 }
@@ -10,5 +17,16 @@
     transform: translateY(-2px) translateX(2px);
 }
 
+@media (max-width: 892px) {
+    .contact-area{
+        height: 150vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-area{
+        height: 70vh;
+    }
+}
 
 /*Animation*/

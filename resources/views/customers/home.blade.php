@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 sm:grid-cols-1">
+            <div class="home-bottom-area grid md:grid-cols-2 sm:grid-cols-1">
                 <div>
                     <div class="flex justify-center items-center mt-10">
                         <h1 class="text-3xl font-bold text-gray-600">{{ __('messages.top products') }}</h1>

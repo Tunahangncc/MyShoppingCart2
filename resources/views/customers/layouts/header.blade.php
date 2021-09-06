@@ -11,6 +11,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ asset('styles/css/customer/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/customer/header.css') }}">
 
 
     @yield('SpecialCss')
@@ -35,7 +36,7 @@
                     </div>
 
                     <!--Main Nav-->
-                    <div class="hidden md:flex items-center space-x-1">
+                    <div class="main-nav hidden md:flex items-center space-x-1">
                         <a href="{{ route('customerHome') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.home') }}</a>
                         <a href="{{ route('customerProducts') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.products') }}</a>
                         <a href="{{ route('customerAboutUs') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.about') }}</a>
@@ -45,12 +46,12 @@
 
                 <!--Auth Nav-->
                 @guest
-                    <div class="hidden md:flex items-center space-x-1">
+                    <div class="auth-nav hidden md:flex items-center space-x-1">
                         <a href="{{ route('customerLogin') }}" class="py-5 px-3">{{ __('messages.navbar content text.authentication button.login') }}</a>
                         <a href="{{ route('customerRegister') }}" class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300">{{ __('messages.navbar content text.authentication button.sign up') }}</a>
                     </div>
                 @else
-                    <div class="hidden md:flex items-center space-x-1">
+                    <div class="auth-nav hidden md:flex items-center space-x-1">
                         <a href="{{ route('customerProfile') }}" class="py-5 px-3">
                             <i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}
                         </a>
@@ -61,7 +62,7 @@
                 @endguest
 
                 <!--Mobile Button-->
-                <div class="md:hidden flex items-center">
+                <div class="mobile-button md:hidden flex items-center">
                     <button class="mobile-menu-button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />

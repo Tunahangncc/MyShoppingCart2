@@ -5,6 +5,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -25,12 +26,19 @@ Route::group(['prefix' => 'customer'], function (){
             //Login
             Route::get('login', [CustomerController::class, 'showLoginPage'])->name('Login');
             Route::post('login', [AuthenticationController::class, 'customerLoginPost'])->name('LoginPost');
-    
+
             Route::get('register', [CustomerController::class, 'showRegisterPage'])->name('Register');
         });
 
         Route::middleware(['isCustomer'])->group(function () {
             Route::get('profile', [CustomerController::class, 'showProfilePage'])->name('Profile');
+
+            //Profile Route
+            Route::get('profile/edit', [CustomerController::class, 'showProfileEditPage'])->name('ProfileEdit');
+            Route::put('profile/edit', [ProfileController::class, 'EditProfile'])->name('ProfileEditPut');
+
+            Route::get('profile/address', [CustomerController::class, 'showProfileAddressPage'])->name('ProfileAddress');
+            Route::put('profile/address', [ProfileController::class, 'EditAddress'])->name('ProfileEditAddress');
         });
     });
 

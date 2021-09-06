@@ -17,6 +17,12 @@
     transform: rotate(160deg);
 }
 
+@media (max-width: 892px) {
+    .short-information{
+        margin-top: 120px;
+    }
+}
+
 @media (max-width: 450px) {
     .about-content{
         margin-bottom: 220px;

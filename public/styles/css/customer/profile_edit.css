@@ -1,0 +1,23 @@
+.profile-content-area{
+    height: 140vh;
+}
+
+.profile-content-area .profile-edit-form form button:hover i{
+    animation: profileEdit 0.5s;
+    animation-iteration-count: 1;
+}
+
+@media (max-width: 892px) {
+    .profile-content-area{
+        height: 200vh;
+    }
+}
+
+/*Animate*/
+@keyframes profileEdit {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}

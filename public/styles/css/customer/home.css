@@ -71,6 +71,19 @@
     }
 }
 
+@media (max-width: 892px) {
+    .home-bottom-area{
+        display: flex;
+        flex-direction: column;
+    }
+    .slider-area .carousel-item{
+        height: auto !important;
+    }
+    .slider-grid-type{
+        padding: 30px;
+    }
+}
+
 @media only screen and (max-width: 640px) {
     .content-area .header-content-text-area{
         font-size: .875rem;

@@ -1,0 +1,8 @@
+@media (max-width: 910px) {
+    .main-nav{
+        font-size: 14px;
+    }
+    .auth-nav{
+        font-size: 14px;
+    }
+}
