@@ -1,0 +1,179 @@
+.products-area .product-card:hover .product-card-top-right-circle{
+    transform: rotate(-90deg);
+}
+
+.products-area .product-card .show-product-details-button:hover i{
+    animation: showDetails 0.7s;
+    animation-iteration-count: 1;
+}
+
+/*Category Navbar*/
+
+.categories-area .header{
+    min-height: 50px;
+    position: relative;
+}
+
+.bars{
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: 0.5s linear;
+    display: none;
+}
+.bars.rotate{
+    transform: translateY(-50%) rotate(180deg);
+}
+
+#navbar{
+    float: right;
+    margin-right: 100px;
+    background-color: #111;
+}
+
+#navbar > li{
+    list-style: none;
+    display: inline-block;
+    line-height: 50px;
+}
+#navbar > li:hover{
+    color: crimson;
+}
+
+.header a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 25px;
+}
+
+.menu-one{
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 0 3px #000;
+}
+.drop-one:hover > .menu-one{
+    left: 0;
+}
+
+.menu-one ul{
+    flex: 1;
+    text-align: center;
+    list-style: none;
+    padding: 10px;
+}
+
+.menu-one ul h4{
+    text-transform: uppercase;
+    color: teal;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.menu-one ul a{
+    color: black;
+}
+
+.menu-one ul img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.drop-two{
+    position: relative;
+}
+
+.menu-two{
+    position: absolute;
+    list-style: none;
+    background: #555;
+    left: 0;
+    display: none;
+}
+
+.drop-two:hover > .menu-two{
+     display: block;
+}
+
+.menu-two li:hover{
+    background: orange;
+}
+
+span{
+    display: inline-block;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+.drop-one:hover span,
+.drop-two:hover span{
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 1100px) {
+    #navbar{
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 950px) {
+    #navbar{
+        position: absolute;
+        top: 50px;
+        left: -100%;
+        text-align: left;
+        transition: 0.5s linear;
+    }
+
+    #navbar li{
+        display: block;
+    }
+
+    .menu-one{
+        position: relative;
+        box-shadow: none;
+        display: none;
+    }
+
+    .drop-one:hover > .menu-one{
+        display: block;
+    }
+
+    .menu-one ul{
+        text-align: left;
+    }
+
+    .menu-two{
+        position: relative;
+    }
+
+    .bars{
+        display: block;
+    }
+
+    #navbar.active{
+        left: 0;
+    }
+}
+
+/*----*/
+
+
+/*Animation*/
+@keyframes showDetails {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}

@@ -1,0 +1,53 @@
+.wrapper{
+    display:grid;
+    height:100vh;
+    place-items:center
+}
+
+.product-properties{
+    display:grid;
+    height:100vh;
+    place-items:center
+}
+
+.wrapper .add-basket-button:hover i{
+    animation: addBasket 0.5s;
+    animation-iteration-count: 1;
+}
+
+.wrapper .product-like-button:hover i{
+    animation: likeButton 0.5s;
+    animation-iteration-count: 1;
+}
+
+.wrapper .product-like-button .active{
+    color: crimson;
+}
+.wrapper .product-like-button .disable{
+    color: #4B5563;
+}
+.wrapper .liked{
+    color: crimson;
+}
+.wrapper .not-liked{
+    color: #4B5563;
+}
+
+
+/*Animation*/
+
+@keyframes addBasket {
+    0%  {transform: rotate(-6deg)}
+    30% {transform: rotate(8deg)}
+    50% {transform: rotate(-8deg)}
+    70% {transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}
+
+@keyframes likeButton{
+    0%  {transform: rotate(-6deg)}
+    30% {transform: rotate(8deg)}
+    50% {transform: rotate(-8deg)}
+    70% {transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}

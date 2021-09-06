@@ -1,0 +1,26 @@
+.about-content{
+    display:grid;
+    height:50vh;
+    place-items:center
+}
+
+.hidden-description{
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.show-world-store-description:hover .hidden-description{
+    opacity: 1;
+}
+
+.hoverWorld{
+    transform: rotate(160deg);
+}
+
+@media (max-width: 450px) {
+    .about-content{
+        margin-bottom: 220px;
+    }
+}
+
+/*Animation*/
