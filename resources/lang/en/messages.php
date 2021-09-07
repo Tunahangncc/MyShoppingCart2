@@ -7,6 +7,8 @@ return[
         'login' => 'Login',
         'sign up' => 'Sign Up',
         'profile' => 'Profile',
+        'profile edit product' => 'Profile | Edit Product',
+        'profile message box' => 'Profile | Message Box',
     ],
 
     //Navbar
@@ -167,7 +169,7 @@ return[
             'add product' => 'Add Product',
             'edit product' => 'Edit Product',
             'address' => 'Address',
-            'my products' => 'My Products',
+            'message box' => 'Message Box',
         ],
 
         'profile card text' => [
@@ -207,6 +209,60 @@ return[
         'profile address form text' => [
             'city' => 'City',
             'district' => 'District',
+        ],
+    //----
+
+    //Profile Add Product
+        'profile add product form text' => [
+            'product name' => 'Product Name',
+            'product brand' => 'Product Brand',
+            'product price' => 'Product Price',
+            'product amount' => 'Product Amount',
+            'product color' => 'Product Color',
+            'color name' => 'Color Name',
+            'product description' => 'Product Description',
+            'product image' => 'Product Image',
+            'select a image' => 'Select A Image',
+            'publish product' => 'Publish Product',
+            'text1' => 'Please do not write brand',
+            'text2' => 'You can enter the information we need to know about the product.',
+        ],
+    //----
+
+    //Profile Edit Product
+        'profile edit products text' => [
+            'product name' => 'Product Name',
+            'product brand' => 'Product Brand',
+            'product image' => 'Product Image',
+            'edit product' => 'Edit Product',
+            'my products' => 'My Products',
+            'delete product' => 'Delete Product',
+        ],
+
+        'profile edit selected product form text' => [
+            'product name' => 'Product Name',
+            'product brand' => 'Product Brand',
+            'product price' => 'Product Price',
+            'product amount' => 'Product Amount',
+            'product color' => 'Product Color',
+            'color name' => 'Color Name',
+            'product description' => 'Product Description',
+            'product image' => 'Product Image',
+            'select a image' => 'Select A Image',
+            'edit product' => 'Edit Product',
+            'text1' => 'When changing the product name, please do not write the brand name.',
+            'text2' => 'You can change the information we need to know about the product.',
+        ],
+    //----
+
+    //Profile Message Box
+        'profile message box text' => [
+            'message name' => 'Message Name',
+            'message body' => 'Message Body',
+            'message type' => 'Message Type',
+            'realised time' => 'Realised Time',
+            'mark as read' => 'Mark As Read',
+            'delete message' => 'Delete Message',
         ],
     //----
 ];

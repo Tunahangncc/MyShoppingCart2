@@ -1,0 +1,37 @@
+.profile-content-area .profile-add-product-area form button:hover i{
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+    .profile-content-area{
+        height: 300vh;
+    }
+    .profile-content-area .profile-categories{
+        margin-bottom: 20px;
+    }
+    .profile-content-area .profile-add-product-area{
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile-content-area{
+        height: 180vh;
+    }
+    .profile-content-area .profile-add-product-area{
+        width: 100% !important;
+        padding: 15px;
+    }
+}

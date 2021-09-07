@@ -71,4 +71,24 @@ class CustomerController extends Controller
             'districts' => $districts,
         ]);
     }
+
+    public function showProfileAddProductPage()
+    {
+        return view('customers.profile_add_product');
+    }
+
+    public function showProfileEditProductPage()
+    {
+        return view('customers.profile_edit_product');
+    }
+
+    public function showProfileEditSelectedProductPage()
+    {
+        return view('customers.profile_edit_selected_product');
+    }
+
+    public function showMessageBoxPage()
+    {
+        return view('customers.profile_message_box');
+    }
 }

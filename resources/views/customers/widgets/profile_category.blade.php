@@ -30,13 +30,13 @@
                href="{{ route('customerProfileAddress') }}">{{ __('messages.profile category text.address') }}</a>
 
             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-               href="#">{{ __('messages.profile category text.add product') }}</a>
+               href="{{ route('customerProfileAddProduct') }}">{{ __('messages.profile category text.add product') }}</a>
 
             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-               href="#">{{ __('messages.profile category text.edit product') }}</a>
+               href="{{ route('customerProfileEditProduct') }}">{{ __('messages.profile category text.edit product') }}</a>
 
             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-               href="#">{{ __('messages.profile category text.my products') }}</a>
+               href="{{ route('customerProfileMessageBox') }}">{{ __('messages.profile category text.message box') }}</a>
 
             <!--<div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open"

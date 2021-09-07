@@ -1,0 +1,21 @@
+
+
+
+
+
+@media (max-width: 500px) {
+    .profile-content-area{
+        height: 90vh;
+    }
+
+    .profile-content-area .profile-edit-product-area{
+        padding: 20px;
+    }
+    .profile-content-area .profile-edit-product-area table th{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .profile-content-area .profile-edit-product-area table td{
+        font-size: 12px;
+    }
+}
