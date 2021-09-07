@@ -13,8 +13,6 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $brands = array(
-            ''
-        );
+
     }
 }

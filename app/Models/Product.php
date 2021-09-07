@@ -42,6 +42,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUniqCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Brand $brand
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\Color $color
+ * @property-read \App\Models\User $user
  */
 class Product extends Model
 {
