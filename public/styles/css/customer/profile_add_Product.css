@@ -1,4 +1,4 @@
-.profile-content-area .profile-add-product-area form button:hover i{
+.profile-content-area .profile-add-product-form form button:hover i{
     animation-name: spin;
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
@@ -14,14 +14,36 @@
     }
 }
 
+@media (max-width: 2500px) {
+    @media (max-height: 900px) {
+        .profile-add-product-area{
+            height: 1250px;
+        }
+    }
+
+    .profile-add-product-area .profile-add-product-form{
+        width: 50%;
+    }
+
+    .profile-add-product-area .profile-add-product-form form{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1650px) {
+    .profile-add-product-area .profile-add-product-form{
+        width: 100%;
+    }
+}
+
 @media (max-width: 900px) {
-    .profile-content-area{
+    .profile-add-product-area{
         height: 300vh;
     }
     .profile-content-area .profile-categories{
         margin-bottom: 20px;
     }
-    .profile-content-area .profile-add-product-area{
+    .profile-content-area .profile-add-product-form{
         width: 100% !important;
     }
 }
@@ -30,7 +52,7 @@
     .profile-content-area{
         height: 180vh;
     }
-    .profile-content-area .profile-add-product-area{
+    .profile-content-area .profile-add-product-form{
         width: 100% !important;
         padding: 15px;
     }

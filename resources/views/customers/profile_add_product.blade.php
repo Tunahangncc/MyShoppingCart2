@@ -18,12 +18,12 @@
     $nameArray = explode(' ', $fullName);
     ?>
 
-    <div class="profile-content-area flex justify-around">
+    <div class="profile-content-area profile-add-product-area flex justify-around">
         <div class="profile-categories mt-6">
             @include('customers.widgets.profile_category')
         </div>
 
-        <div class="profile-add-product-area flex justify-center items-center w-1/2">
+        <div class="profile-add-product-form flex justify-center items-center w-1/2">
             <form class="w-full max-w-lg" method="POST" action="{{ route('customerProfileAddProductPost') }}" enctype="multipart/form-data">
                 @csrf
 

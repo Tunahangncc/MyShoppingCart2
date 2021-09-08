@@ -1,10 +1,44 @@
 
 
-.profile-content-area .profile-address-form form button:hover i{
+.profile-address-area .profile-address-form form button:hover i{
     animation: profileEdit 0.5s;
     animation-iteration-count: 1;
 }
 
+
+@media (max-width: 2500px) {
+    @media (max-height: 600px) {
+        .profile-address-area{
+            height: 150vh;
+        }
+    }
+
+    .profile-address-area .profile-address-form{
+        width: 50%;
+    }
+
+    .profile-address-area .profile-address-form form{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1650px) {
+    .profile-address-area .profile-address-form{
+        width: 100%;
+    }
+}
+
+@media (max-width: 892px) {
+    .profile-address-area{
+        height: 120vh;
+    }
+}
+
+@media (max-width: 412px) {
+    .profile-address-area{
+        height: 70vh;
+    }
+}
 
 /*Animate*/
 @keyframes profileEdit {
