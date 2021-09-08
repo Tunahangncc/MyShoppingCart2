@@ -13,7 +13,15 @@ class CustomerController extends Controller
 
     public function showProductsPage()
     {
-        return view('customers.products');
+        $products = getAllProducts();
+        $mainCategories = getMainCategories();
+        $subCategories = getSubCategories();
+
+        return view('customers.products', [
+            'products' => $products,
+            'mainCategories' => $mainCategories,
+            'subCategories' => $subCategories,
+        ]);
     }
 
     public function showAboutUsPage()

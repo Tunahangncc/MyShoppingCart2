@@ -8,12 +8,10 @@
 
 <!--CSS-->
     <link href="{{ asset('styles/css/customer/app.css') }}" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('styles/css/min_css/tailwind.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ asset('styles/css/customer/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/css/customer/header.css') }}">
-
-
     @yield('SpecialCss')
 <!---->
 
