@@ -55,6 +55,7 @@ class CategorySeeder extends Seeder
                 $category = new Category;
                 $category->name = $item;
                 $category->slug = Str::slug($item, '-');
+                $category->parent_id = $topCategory;
                 $category->created_at = now();
                 $category->updated_at = now();
                 $category->save();
@@ -74,6 +75,7 @@ class CategorySeeder extends Seeder
                 $category = new Category;
                 $category->name = $item;
                 $category->slug = Str::slug($item, '-');
+                $category->parent_id = $topCategory;
                 $category->created_at = now();
                 $category->updated_at = now();
                 $category->save();

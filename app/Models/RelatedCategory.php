@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|RelatedCategory whereTopCategories($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RelatedCategory whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Category $category
  */
 class RelatedCategory extends Model
 {

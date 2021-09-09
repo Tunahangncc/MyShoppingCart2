@@ -18,10 +18,3 @@ function getSubCategories()
 {
     return RelatedCategory::query()->with(['category'])->where('top_categories', '!=', 0)->get();
 }
-
-function getChildCategories($category, $topCategories)
-{
-    $topCategoryArray = explode(',', $topCategories);
-
-    return Category::query()->where('id', '=', $topCategoryArray[count($topCategoryArray) - 1]);
-}

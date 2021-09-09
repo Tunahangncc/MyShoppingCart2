@@ -46,6 +46,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Category $category
  * @property-read \App\Models\Color $color
  * @property-read \App\Models\User $user
+ * @property int $user_id
+ * @method static \Database\Factories\ProductFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUserId($value)
  */
 class Product extends Model
 {

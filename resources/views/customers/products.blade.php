@@ -21,11 +21,19 @@
                     <a href="#">Categories <span><i class="fas fa-chevron-down"></i></span></a>
 
                     <div class="menu-one">
-                        @foreach($mainCategories as $mainCategory)
+                        @foreach ($categories as $category)
                             <ul>
-                                <li><h4>{{ $mainCategory->category->name }}</h4></li>
+                                <li>
+                                    <h4>
+                                        <a href="{{ route('customer', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                    </h4>
+                                </li>
 
-
+                                <ul class="categories-area-sub-category">
+                                    @foreach ($category->childrenCategories as $childCategory)
+                                        @include('customers.sub_category_list', ['child_category' => $childCategory])
+                                    @endforeach
+                                </ul>
                             </ul>
                         @endforeach
                     </div>

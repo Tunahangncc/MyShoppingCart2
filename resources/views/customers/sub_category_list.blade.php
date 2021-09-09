@@ -1,11 +1,10 @@
-<ul>
-    @foreach($childCategories as $parent)
-        <li>
-            {{ $parent->category->name }}
-
-            @include('customers.sub_category_list', [
-                'childCategories' => $parent->category
-            ])
-        </li>
-    @endforeach
-</ul>
+<li>
+    <a href="#">{{ $child_category->name }}</a>
+</li>
+@if ($child_category->categories)
+    <ul class="categories-area-sub-category">
+        @foreach ($child_category->categories as $childCategory)
+            @include('customers.sub_category_list', ['child_category' => $childCategory])
+        @endforeach
+    </ul>
+@endif
