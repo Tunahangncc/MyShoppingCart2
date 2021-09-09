@@ -25,7 +25,7 @@
                             <ul>
                                 <li>
                                     <h4>
-                                        <a href="{{ route('customer', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                        <a href="{{ route('customerShowSelectedCategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                     </h4>
                                 </li>
 

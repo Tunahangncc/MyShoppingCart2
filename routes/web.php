@@ -23,6 +23,8 @@ Route::group(['prefix' => 'customer'], function (){
 
         Route::get('contact', [CustomerController::class, 'showContactPage'])->name('Contact');
 
+        Route::get('products/category/{id}', [CategoryController::class, 'showSelectedCategory'])->name('ShowSelectedCategory');
+
         Route::middleware(['isLogin'])->group(function () {
             //Login
             Route::get('login', [CustomerController::class, 'showLoginPage'])->name('Login');
@@ -54,8 +56,6 @@ Route::group(['prefix' => 'customer'], function (){
             Route::delete('profile/message-box/delete-message/{id}', [ProfileController::class, 'DeleteMessage'])->name('ProfileMessageBoxMessageDelete');
             Route::put('profile/message-box/read-message/{id}', [ProfileController::class, 'ReadMessage'])->name('ProfileMessageBoxReadMessage');
         });
-
-        Route::get('products/category/{slug}', [CategoryController::class, 'showSelectedCategory'])->name('aa');
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
