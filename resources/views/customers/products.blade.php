@@ -21,42 +21,21 @@
                     <a href="#">Categories <span><i class="fas fa-chevron-down"></i></span></a>
 
                     <div class="menu-one">
-                        <ul>
-                            <li><h4>Our Company</h4></li>
-                            <li><img src="{{ asset('images/customer_images/general_images/header.png') }}" alt=""></li>
-                        </ul>
+                        @foreach ($categories as $category)
+                            <ul>
+                                <li>
+                                    <h4>
+                                        <a href="{{ route('customer', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                    </h4>
+                                </li>
 
-                        <ul>
-                            <li><h4>Design</h4></li>
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">Javascript</a></li>
-                            <li><a href="#">Python</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><h4>Development </h4></li>
-                            <li><a href="#">Website</a></li>
-                            <li><a href="#">Frontend</a></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><h4>Skill </h4></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                        </ul>
-
-                        <ul>
-                            <li><h4>News </h4></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                            <li><a href="#">List Item</a></li>
-                        </ul>
+                                <ul class="categories-area-sub-category">
+                                    @foreach ($category->childrenCategories as $childCategory)
+                                        @include('customers.sub_category_list', ['child_category' => $childCategory])
+                                    @endforeach
+                                </ul>
+                            </ul>
+                        @endforeach
                     </div>
                 </li>
                 <!--
@@ -77,38 +56,43 @@
 
     <div class="products-area md:p-10">
         <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-            <div class="product-card container mx-auto max-w-sm w-80 mb-6 bg-white rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition-all duration-500">
-                <div class="flex items-center justify-between px-4">
-                    <div class="flex justify-between items-center py-4">
-                        <img class="w-12 rounded-full" src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_0.jpg" alt="Alex" />
+            @foreach($products as $product)
+                <div class="product-card container mx-auto max-w-sm w-80 mb-6 bg-white rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition-all duration-500">
+                    <div class="flex items-center justify-between px-4">
+                        <div class="flex justify-between items-center py-4">
+                            <img class="w-12 rounded-full" src="{{ asset('images/customer_images/general_images') }}/{{ $product->user->images }}" alt="user image" />
 
-                        <div class="ml-3">
-                            <h1 class="text-xl font-bold text-gray-800 cursor-pointer">Product Owner</h1>
-                            <p class="text-sm text-gray-800 hover:underline cursor-pointer">#release time</p>
+                            <div class="ml-3">
+                                <h1 class="text-xl font-bold text-gray-800 cursor-pointer">{{ $product->user->name }}</h1>
+                                <p class="text-sm text-gray-800 hover:underline cursor-pointer">{{ $product->created_at->diffForHumans() }}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <i class="product-card-top-right-circle fas fa-circle-notch transition duration-300"></i>
                         </div>
                     </div>
 
-                    <div>
-                        <i class="product-card-top-right-circle fas fa-circle-notch transition duration-300"></i>
+                    <img src="{{ asset('images/customer_images/product_images') }}/{{ $product->image }}" alt="product image">
+
+                    <div class="p-6">
+                        <h1 class="text-3xl font-bold text-gray-800">{{ $product->name }}</h1>
+
+                        <h2 class="text-xl text-gray-800 font-semibold">{{ __('messages.card text.product description') }}</h2>
+
+                        <p class="text-lg font font-thin mb-5">{{ $product->description }}</p>
+
+                        <a href="{{ route('customerProductDetails') }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
+                            <i class="fas fa-search"></i>
+                            {{ __('messages.card text.show details') }}
+                        </a>
                     </div>
                 </div>
+            @endforeach
+        </div>
 
-                <img src="https://images.unsplash.com/photo-1527112862739-c3b9466d902e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=966&q=80" alt="">
-
-                <div class="p-6">
-                    <h1 class="text-3xl font-bold text-gray-800">Product Name</h1>
-
-                    <h2 class="text-xl text-gray-800 font-semibold">{{ __('messages.card text.product description') }}</h2>
-
-                    <p class="text-lg font font-thin mb-5">Lorem ipsum carrots, enhanced undergraduate developer, but they do occaecat time and vitality, Lorem ipsum carrots,</p>
-
-                    <a href="{{ route('customerProductDetails') }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
-                        <i class="fas fa-search"></i>
-                        {{ __('messages.card text.show details') }}
-                    </a>
-                </div>
-            </div>
-
+        <div class="product-paginate-links">
+            {{ $products->links() }}
         </div>
     </div>
 </div>

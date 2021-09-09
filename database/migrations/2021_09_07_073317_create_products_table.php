@@ -19,19 +19,19 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->integer('price');
             $table->integer('amount');
-            $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('category_id');
             $table->string('slug');
             $table->string('image');
             $table->string('uniq_code');
-            $table->integer('number_of_likes');
+            $table->integer('number_of_likes')->default(0);
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
-            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 

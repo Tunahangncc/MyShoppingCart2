@@ -18,7 +18,7 @@
     $nameArray = explode(' ', $fullName);
     ?>
 
-    <div class="profile-content-area flex justify-around">
+    <div class="profile-content-area profile-edit-selected-product-area flex justify-around">
         <div class="profile-categories mt-6">
             @include('customers.widgets.profile_category')
         </div>

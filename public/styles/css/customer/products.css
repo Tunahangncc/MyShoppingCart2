@@ -14,6 +14,10 @@
     position: relative;
 }
 
+.categories-area .categories-area-sub-category{
+    margin-left: 70px;
+}
+
 .bars{
     color: white;
     font-size: 2em;
@@ -64,11 +68,8 @@
     left: 0;
 }
 
-.menu-one ul{
-    flex: 1;
-    text-align: center;
-    list-style: none;
-    padding: 10px;
+.menu-one .categories-area-sub-category{
+    list-style: circle;
 }
 
 .menu-one ul h4{
@@ -76,6 +77,7 @@
     color: teal;
     font-size: 20px;
     font-weight: 900;
+    text-decoration: underline;
 }
 
 .menu-one ul a{
@@ -166,6 +168,19 @@ span{
     }
 }
 
+.product-paginate-links{
+    display: flex;
+    justify-content: center;
+}
+.product-paginate-links p{
+    display: none;
+}
+.product-paginate-links span{
+    margin-right: 3px;
+}
+.product-paginate-links a{
+    margin-right: 5px;
+}
 /*----*/
 
 

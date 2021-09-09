@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,7 +14,13 @@ class CustomerController extends Controller
 
     public function showProductsPage()
     {
-        return view('customers.products');
+        $products = getAllProducts();
+        $categories = Category::query()->whereNull('parent_id')->with('childrenCategories')->get();
+
+        return view('customers.products', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
     }
 
     public function showAboutUsPage()

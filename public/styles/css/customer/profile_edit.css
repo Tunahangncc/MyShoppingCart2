@@ -1,15 +1,45 @@
-.profile-content-area{
+.profile-edit-area{
     height: 140vh;
 }
 
-.profile-content-area .profile-edit-form form button:hover i{
+.profile-edit-area .profile-edit-form form button:hover i{
     animation: profileEdit 0.5s;
     animation-iteration-count: 1;
 }
 
+@media (max-width: 2500px) {
+    .profile-edit-area{
+        height: 80vh;
+    }
+
+    .profile-edit-area .profile-edit-form{
+        width:50%;
+    }
+    .profile-edit-area .profile-edit-form form{
+        width:100%;
+    }
+}
+
+@media (max-width: 1650px) {
+    .profile-edit-area{
+        height: 140vh;
+    }
+
+    .profile-edit-area .profile-edit-form{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
 @media (max-width: 892px) {
-    .profile-content-area{
+    .profile-edit-area{
         height: 200vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile-edit-area{
+        height: 150vh;
     }
 }
 

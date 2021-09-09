@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -53,6 +54,8 @@ Route::group(['prefix' => 'customer'], function (){
             Route::delete('profile/message-box/delete-message/{id}', [ProfileController::class, 'DeleteMessage'])->name('ProfileMessageBoxMessageDelete');
             Route::put('profile/message-box/read-message/{id}', [ProfileController::class, 'ReadMessage'])->name('ProfileMessageBoxReadMessage');
         });
+
+        Route::get('products/category/{slug}', [CategoryController::class, 'showSelectedCategory'])->name('aa');
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
