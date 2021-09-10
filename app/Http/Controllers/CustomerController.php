@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function showHomePage()
     {
-        return view('customers.home');
+        $topProducts = Product::query()->with(['category'])->select('*')->orderBy('number_of_likes', 'DESC')->take(4)->get();
+
+        return view('customers.home', compact('topProducts'));
     }
 
     public function showProductsPage()
@@ -19,6 +22,7 @@ class CustomerController extends Controller
 
         return view('customers.products', [
             'products' => $products,
+            'productCount' => productCount(),
             'categories' => $categories,
         ]);
     }
@@ -97,5 +101,10 @@ class CustomerController extends Controller
     public function showMessageBoxPage()
     {
         return view('customers.profile_message_box');
+    }
+
+    public function showShoppingBagPage()
+    {
+        return view('customers.profile_shopping_bag');
     }
 }

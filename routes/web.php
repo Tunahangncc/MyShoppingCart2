@@ -17,11 +17,13 @@ Route::group(['prefix' => 'customer'], function (){
 
         Route::get('products', [CustomerController::class, 'showProductsPage'])->name('Products');
 
-        Route::get('products/details', [ProductController::class, 'showProductDetails'])->name('ProductDetails');//Add product id
+        Route::get('products/details/{id}', [ProductController::class, 'showProductDetails'])->name('ProductDetails');
 
         Route::get('about-us', [CustomerController::class, 'showAboutUsPage'])->name('AboutUs');
 
         Route::get('contact', [CustomerController::class, 'showContactPage'])->name('Contact');
+
+        Route::get('products/category/{id}', [CategoryController::class, 'showSelectedCategory'])->name('ShowSelectedCategory');
 
         Route::middleware(['isLogin'])->group(function () {
             //Login
@@ -53,9 +55,15 @@ Route::group(['prefix' => 'customer'], function (){
             Route::get('profile/message-box', [CustomerController::class, 'showMessageBoxPage'])->name('ProfileMessageBox');
             Route::delete('profile/message-box/delete-message/{id}', [ProfileController::class, 'DeleteMessage'])->name('ProfileMessageBoxMessageDelete');
             Route::put('profile/message-box/read-message/{id}', [ProfileController::class, 'ReadMessage'])->name('ProfileMessageBoxReadMessage');
-        });
 
-        Route::get('products/category/{slug}', [CategoryController::class, 'showSelectedCategory'])->name('aa');
+            Route::get('profile/shopping-bag', [CustomerController::class, 'showShoppingBagPage'])->name('ProfileShoppingBag');
+
+            //Product Description Page
+            Route::post('products/add-product/{id}', [ProductController::class, 'addProductToCart'])->name('AddProductToCart');
+
+            Route::get('product/like-product', [ProductController::class, 'likeProduct'])->name('LikeProduct');
+            //
+        });
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');

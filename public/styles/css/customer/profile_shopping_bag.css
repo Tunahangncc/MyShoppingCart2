@@ -1,0 +1,28 @@
+
+
+@media (max-width: 900px) {
+    .shopping-bag-area{
+        display: contents;
+    }
+    .shopping-bag-area .shopping-bag-content .shopping-bag-product-details{
+        width: 100%;
+    }
+
+    .shopping-bag-area .shopping-bag-content #summary{
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .shopping-bag-area .shopping-bag-content{
+        flex-direction: column;
+    }
+
+    .shopping-bag-area .shopping-bag-content .shopping-bag-product-details{
+        width: 100%;
+    }
+
+    .shopping-bag-area .shopping-bag-content #summary{
+        width: 100%;
+    }
+}

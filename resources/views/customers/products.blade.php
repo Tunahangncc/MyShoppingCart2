@@ -25,7 +25,7 @@
                             <ul>
                                 <li>
                                     <h4>
-                                        <a href="{{ route('customer', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                        <a href="{{ route('customerShowSelectedCategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
                                     </h4>
                                 </li>
 
@@ -82,7 +82,7 @@
 
                         <p class="text-lg font font-thin mb-5">{{ $product->description }}</p>
 
-                        <a href="{{ route('customerProductDetails') }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
+                        <a href="{{ route('customerProductDetails', ['id' => $product->id]) }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
                             <i class="fas fa-search"></i>
                             {{ __('messages.card text.show details') }}
                         </a>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="product-paginate-links">
-            {{ $products->links() }}
+            <span class="flex items-center text-gray-600">Showing {{ $productCount }} unique products</span> {{ $products->links() }}
         </div>
     </div>
 </div>

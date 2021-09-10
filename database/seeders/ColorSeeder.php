@@ -22,10 +22,10 @@ class ColorSeeder extends Seeder
     public function run()
     {
         $colors = [
-            'GRAY' => '#6B7280',
-            'RED' => '#DC2626',
-            'BLUE' => '#2563EB',
-            'GREEN' => '#059669',
+            '#6B7280' => 'GRAY',
+            '#DC2626' => 'RED',
+            '#2563EB' => 'BLUE',
+            '#059669' => 'GREEN',
         ];
 
         //Insert color
