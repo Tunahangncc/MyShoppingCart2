@@ -9,6 +9,7 @@ return[
         'profile' => 'Profile',
         'profile edit product' => 'Profile | Edit Product',
         'profile message box' => 'Profile | Message Box',
+        'profile shopping bag' => 'Profile | Shopping Bag',
     ],
 
     //Navbar
@@ -44,7 +45,7 @@ return[
     //Home Content
         //Product Cards
         'product card content text' => [
-            'product type' => 'Product Type',
+            'product category' => 'Product Category',
             'review product' => 'Review Product',
         ],
         //----
@@ -170,6 +171,7 @@ return[
             'edit product' => 'Edit Product',
             'address' => 'Address',
             'message box' => 'Message Box',
+            'shopping bag' => 'Shopping Bag',
         ],
 
         'profile card text' => [
@@ -263,6 +265,22 @@ return[
             'realised time' => 'Realised Time',
             'mark as read' => 'Mark As Read',
             'delete message' => 'Delete Message',
+        ],
+    //----
+
+    //Profile Shopping Bag
+        'profile shopping bag text' => [
+            'shopping cart' => 'Shopping Cart',
+            'items' => 'Items',
+            'order summary' => 'Order Summary',
+            'product details' => 'PRODUCT DETAILS',
+            'quantity' => 'QUANTITY',
+            'price' => 'PRICE',
+            'total' =>'TOTAL',
+            'remove' => 'Remove',
+            'continue shopping' => 'Continue Shopping',
+            'total cost' => 'Total Cost',
+            'order now' => 'Order Now',
         ],
     //----
 ];

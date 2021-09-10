@@ -10,13 +10,13 @@
 
 
 @section('content')
-
+<!--{{ asset('images/customer_images/general_images/header.png') }}-->
     <div class="content-area">
         <div class="grid grid-cols-1">
             <div class="w-full h-full bg-no-repeat bg-cover" style="background: url('{{ asset('images/customer_images/general_images/header.png') }}'); background-position-y: -790px; background-position-x: center;">
                 <div class="grid md:grid-cols-2 sm:grid-cols-1 h-72 bg-black bg-opacity-40">
                     <div class="flex items-center">
-                        <div class="header-content-text-area bg-blue-900 bg-opacity-60 p-5 ml-2 mr-2 rounded">
+                        <div class="header-content-text-area  bg-opacity-60 p-5 ml-2 mr-2 rounded">
                             <h1 class="mb-2 font-bold text-xl" id="header_content_title">{{ __('messages.header content text.title') }}</h1>
                             <p class="md:text-base sm:text-sm lg:text-lg" id="header_content_text">
                                 {{ __('messages.header content text.body') }}
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="flex items-center justify-center">
-                        <a href="#" class="seeProductsButton bg-yellow-500 hover:bg-yellow-600 font-bold py-2 px-4 rounded transition duration-300">{{ __('messages.header content text.button')}}</a>
+                        <a href="#" class="seeProductsButton bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-4 rounded transition duration-300">{{ __('messages.header content text.button')}}</a>
                     </div>
                 </div>
             </div>
@@ -36,63 +36,27 @@
                         <h1 class="text-3xl font-bold text-gray-600">{{ __('messages.top products') }}</h1>
                     </div>
                     <div class="product-card-area grid md:p-20 sm:p-0 lg:grid-cols-2 md:grid-cols-2">
-                        <div class="product_card w-64 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 duration-500 transform transition cursor-pointer mb-6">
-                            <img src="https://images.unsplash.com/photo-1577982787983-e07c6730f2d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=859&q=80" alt="lesson.png">
-                            <div class="p-5">
-                                <h1 class="text-2xl font-bold">Product Name</h1>
-                                <p class="mt-3 text-md font-semibold text-gray-600">{{ __('messages.product card content text.product type') }}</p>
-                                <p class="mt-1 mb-5 text-gray-500 text-sm">
-                                    Product Description
-                                </p>
-                                <div class="flex justify-center">
-                                    <a href="#" class="product-card-show-button flex items-center p-2 rounded-lg bg-yellow-500 text-yellow-200 hover:bg-yellow-200 hover:text-yellow-500 transition duration-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transition duration-300" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                        </svg>
-                                        {{ __('messages.product card content text.review product') }}
-                                    </a>
+                        @foreach($topProducts as $topProduct)
+                            <div class="product_card w-64 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 duration-500 transform transition cursor-pointer mb-6">
+                                <img src="{{ asset('images/customer_images/product_images') }}/{{ $topProduct->image }}" alt="lesson.png">
+                                <div class="p-5">
+                                    <h1 class="text-2xl font-bold">{{ $topProduct->name }}</h1>
+                                    <p class="mt-3 text-md font-semibold text-gray-600">{{ __('messages.product card content text.product category') }}: {{ $topProduct->category->name }}</p>
+                                    <p class="mt-1 mb-5 text-gray-500 text-sm">
+                                        {{ $topProduct->description }}
+                                    </p>
+                                    <div class="flex justify-center">
+                                        <a href="{{ route('customerProductDetails', ['id' => $topProduct->id]) }}" class="product-card-show-button flex items-center p-2 rounded-lg bg-yellow-500 text-yellow-200 hover:bg-yellow-200 hover:text-yellow-500 transition duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transition duration-300" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                            {{ __('messages.product card content text.review product') }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product_card w-64 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 duration-500 transform transition cursor-pointer mb-6">
-                            <img src="https://images.unsplash.com/photo-1577982787983-e07c6730f2d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=859&q=80" alt="lesson.png">
-                            <div class="p-5">
-                                <h1 class="text-2xl font-bold">Product Name</h1>
-                                <p class="mt-3 text-md font-semibold text-gray-600">{{ __('messages.product card content text.product type') }}</p>
-                                <p class="mt-1 mb-5 text-gray-500 text-sm">
-                                    Product Description
-                                </p>
-                                <div class="flex justify-center">
-                                    <a href="#" class="product-card-show-button flex items-center p-2 rounded-lg bg-yellow-500 text-yellow-200 hover:bg-yellow-200 hover:text-yellow-500 transition duration-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transition duration-300" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                        </svg>
-                                        {{ __('messages.product card content text.review product') }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product_card w-64 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 duration-500 transform transition cursor-pointer mb-6">
-                            <img src="https://images.unsplash.com/photo-1577982787983-e07c6730f2d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=859&q=80" alt="lesson.png">
-                            <div class="p-5">
-                                <h1 class="text-2xl font-bold">Product Name</h1>
-                                <p class="mt-3 text-md font-semibold text-gray-600">{{ __('messages.product card content text.product type') }}</p>
-                                <p class="mt-1 mb-5 text-gray-500 text-sm">
-                                    Product Description
-                                </p>
-                                <div class="flex justify-center">
-                                    <a href="#" class="product-card-show-button flex items-center p-2 rounded-lg bg-yellow-500 text-yellow-200 hover:bg-yellow-200 hover:text-yellow-500 transition duration-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 transition duration-300" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                        </svg>
-                                        {{ __('messages.product card content text.review product') }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 

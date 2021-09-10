@@ -14,28 +14,28 @@
     <div class="grid md:grid-cols-2 sm:grid-cols-1">
         <div class="wrapper">
             <div>
-                <img src="https://source.unsplash.com/random/350x350" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md">
+                <img src="{{ asset('images/customer_images/product_images') }}/{{ $selectedProduct->image }}" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" style="height: 600px">
 
-                <div class="relative px-4 -mt-16">
+                <div class="relative px-4 -mt-8">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <div class="flex items-baseline">
-                            <span class="bg-blue-200 text-blue-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">59 minute ago</span>
+                            <span class="bg-blue-200 text-blue-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">{{ $selectedProduct->created_at->diffForHumans() }}</span>
 
                             <div class="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
-                                Tunahan Genç
+                                {{ $selectedProduct->user->name }}
                             </div>
                         </div>
 
-                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">Galaxy A30</h4>
+                        <h4 class="mt-1 text-xl font-semibold uppercase leading-tight truncate">{{ $selectedProduct->name }}</h4>
 
                         <div class="mt-1">
-                            ₺1800
+                            ₺{{ $selectedProduct->price }}
                         </div>
 
                         <div class="mt-4 flex items-center">
-                            <span class="text-blue-600 text-md font-semibold">4 {{ __('messages.product details card.people liked') }}</span>
+                            <span class="text-blue-600 text-md font-semibold">{{ $selectedProduct->number_of_likes }} {{ __('messages.product details card.people liked') }}</span>
                             <span class="text-md text-gray-600 ml-5">
-                                <a href="#" class="product-like-button">
+                                <a href="{{ route('customerLikeProduct') }}" class="product-like-button">
                                     <i class="product-like-button-icon transition duration-300 far fa-heart not-liked"></i>
                                     ({{ __('messages.product details card.do you want to like') }})
                                 </a>
@@ -43,7 +43,18 @@
                         </div>
 
                         <div class="mt-3">
-                            <a href="#" class="add-basket-button bg-gray-500 text-white p-2 rounded hover:bg-gray-800 transition duration-300"><i class="fas fa-shopping-basket mr-2"></i>{{ __('messages.product details card.add shopping bag') }}</a>
+                            <form action="{{ route('customerAddProductToCart', ['id' => $selectedProduct->id]) }}" method="POST" class="flex">
+                                @csrf
+                                <div class="flex justify-around items-center mr-2">
+                                    <input type="hidden" id="selected-product-amount" value="{{ $selectedProduct->amount }}">
+                                    <label class="increase-the-amount mr-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">+</label>
+                                    <input type="text" name="productAmount" id="selected-product-amount-text" class="bg-gray-500 w-14 p-1 text-white font-bold text-center rounded" value="0" readonly>
+                                    <label class="reduce-the-amount ml-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">-</label>
+                                </div>
+                                <button type="submit" class="add-basket-button bg-gray-500 text-white p-2 rounded hover:bg-gray-800 transition duration-300">
+                                    <i class="fas fa-shopping-basket mr-2"></i>{{ __('messages.product details card.add shopping bag') }}
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -59,19 +70,35 @@
                     <div class="mb-4">
                         <h2 class="text-2xl font-bold mb-2 text-gray-800">{{ __('messages.properties text.description') }}</h2>
                         <p class="text-gray-700">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet cupiditate distinctio ducimus exercitationem ipsam magnam natus possimus, quidem quod. Ad alias doloribus eius eveniet fuga, ipsum iste mollitia nihil?
+                            {{ $selectedProduct->description }}
                         </p>
                     </div>
 
                     <div>
                         <h2 class="text-xl font-bold mb-2 text-gray-800 mb-2">{{ __('messages.properties text.properties') }}</h2>
                         <ul>
-                            <li class="mb-2">{{ __('messages.properties text.product price') }}: <span class="font-bold">₺1800</span></li>
-                            <li class="mb-2">{{ __('messages.properties text.product category') }}: <span class="font-bold">Phone</span></li>
-                            <li class="mb-2">{{ __('messages.properties text.product color') }}: <span class="font-bold">Black</span></li>
-                            <li class="mb-2">{{ __('messages.properties text.product amount') }}: <span class="font-bold">4</span></li>
+                            <li class="mb-2">{{ __('messages.properties text.product price') }}: <span class="font-bold">₺{{ $selectedProduct->price }}</span></li>
+                            <li class="mb-2">{{ __('messages.properties text.product category') }}: <span class="font-bold">{{ $selectedProduct->category->name }}</span></li>
+                            <li class="mb-2 flex">
+                                {{ __('messages.properties text.product color') }}:
+                                <div class="flex items-center">
+                                    <span class="font-bold mr-2 ml-1">{{ $selectedProduct->color->name }}</span>
+                                    <div class="rounded-3xl w-5 h-5" style="background-color: {{ $selectedProduct->color->hex_code }}"></div>
+                                </div>
+                            </li>
+                            <li class="mb-2">{{ __('messages.properties text.product amount') }}: <span class="font-bold">{{ $selectedProduct->amount }}</span></li>
                         </ul>
                     </div>
+
+                    @if(session('error-message'))
+                        <div class="bg-red-700 p-2 rounded text-white text-center">
+                            {{ session('error-message') }}
+                        </div>
+                    @elseif(session('success-message'))
+                        <div class="bg-green-700 p-2 rounded text-white text-center">
+                            {{ session('success-message') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -82,3 +109,5 @@
 @section('SpecialJs')
     <script src="{{ asset('styles/js/customer/product_details.js') }}"></script>
 @endsection
+
+<!--Random Picture Link = https://source.unsplash.com/random/350x350 -->

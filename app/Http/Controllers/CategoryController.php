@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $itemCollection = collect($productsArray);
 
         // Define how many items we want to be visible in each page
-        $perPage = 15;
+        $perPage = 12;
 
         // Slice the collection to get the items to display in current page
         $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
@@ -46,25 +46,13 @@ class CategoryController extends Controller
         // Create our paginator and pass it to the view
         $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
 
-        // set url path for generted links
+        // set url path for generated links
         $paginatedItems->setPath($request->url());
 
         return view('customers.products', [
             'products' => $paginatedItems,
-            'categories' => $categories
+            'productCount' => count($productsArray),
+            'categories' => $categories,
         ]);
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    public function paginate($items, $id, $perPage = 5, $page = null, $options = []): LengthAwarePaginator
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage('customer/products/category/'.$id) ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-    }
-
 }

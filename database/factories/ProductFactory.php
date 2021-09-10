@@ -51,6 +51,7 @@ class ProductFactory extends Factory
             'slug' => Str::slug($name, '-'),
             'image' => $images[rand(0, count($images) - 1)],
             'uniq_code' => $uniqCode,
+            'number_of_likes' => rand(0, 20),
             'description' => 'Empty',
         ];
 

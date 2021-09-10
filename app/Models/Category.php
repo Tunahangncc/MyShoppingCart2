@@ -29,6 +29,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $parent_id
  * @property-read \App\Models\RelatedCategory $relatedCategory
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereParentId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $childrenCategories
+ * @property-read int|null $children_categories_count
  */
 class Category extends Model
 {
