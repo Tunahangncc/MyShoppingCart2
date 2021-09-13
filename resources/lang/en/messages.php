@@ -206,11 +206,15 @@ return[
             'day' => 'Day',
             'month' => 'Month',
             'year' => 'Year',
+            'profile updated' => 'Profile Updated',
+            'edit profile' => 'Edit Profile',
         ],
 
         'profile address form text' => [
-            'city' => 'City',
+            'city' => 'Neighbourhood',
             'district' => 'District',
+            'edit address' => 'Edit Address',
+            'address updated' => 'Address Updated',
         ],
     //----
 
@@ -218,6 +222,7 @@ return[
         'profile add product form text' => [
             'product name' => 'Product Name',
             'product brand' => 'Product Brand',
+            'product category' => 'Product Category',
             'product price' => 'Product Price',
             'product amount' => 'Product Amount',
             'product color' => 'Product Color',
@@ -228,6 +233,10 @@ return[
             'publish product' => 'Publish Product',
             'text1' => 'Please do not write brand',
             'text2' => 'You can enter the information we need to know about the product.',
+            'message' => [
+                'error1' => 'Please do not leave the brand field blank.',
+                'error2' => 'Please do not leave the category field blank.',
+            ],
         ],
     //----
 
@@ -281,6 +290,11 @@ return[
             'continue shopping' => 'Continue Shopping',
             'total cost' => 'Total Cost',
             'order now' => 'Order Now',
+
+            'message' => [
+                'payment process completed successfully' => 'Payment process completed successfully',
+                'your shopping cart is empty' => 'Your shopping cart is empty',
+            ],
         ],
     //----
 ];

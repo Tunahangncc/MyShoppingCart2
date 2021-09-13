@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ShoppingBagController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'customer'], function (){
             Route::put('profile/message-box/read-message/{id}', [ProfileController::class, 'ReadMessage'])->name('ProfileMessageBoxReadMessage');
 
             Route::get('profile/shopping-bag', [CustomerController::class, 'showShoppingBagPage'])->name('ProfileShoppingBag');
+            Route::get('profile/shopping-bag/order-now', [ShoppingBagController::class, 'orderNow'])->name('ProfileShoppingBagOrderNow');
 
             //Product Description Page
             Route::post('products/add-product/{id}', [ProductController::class, 'addProductToCart'])->name('AddProductToCart');

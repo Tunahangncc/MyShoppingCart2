@@ -7,12 +7,16 @@ use App\Models\Product;
 use App\Models\ShoppingBag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
     public function showProductDetails($id)
     {
         $selectedProduct = Product::query()->with(['user', 'brand', 'color', 'category'])->where('id', $id)->first();
+
+        //url of the selected product
+        Session::put('selected_product', request()->fullUrl());
 
         return view('customers.product_details', compact('selectedProduct'));
     }

@@ -31,7 +31,7 @@
                         <!-- Profile Card -->
                         <div class="left-area-content bg-white p-3 border-t-4 border-green-400">
                             <div class="image overflow-hidden">
-                                <img class="h-52 w-52 mx-auto" src="{{ asset('images/customer_images/general_images') }}/{{ Auth::user()->images }}" alt="user image">
+                                <img class="h-52 w-52 mx-auto" src="{{ asset('images/customer_images/profile_images') }}/{{ Auth::user()->images }}" alt="user image">
                             </div>
 
                             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ Auth::user()->name }}</h1>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ShoppingBag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -85,7 +88,12 @@ class CustomerController extends Controller
 
     public function showProfileAddProductPage()
     {
-        return view('customers.profile_add_product');
+        $brands = Brand::all();
+        $categories = Category::query()->where('parent_id', '!=', null)->get();
+        return view('customers.profile_add_product', [
+            'brands' => $brands,
+            'categories' => $categories
+        ]);
     }
 
     public function showProfileEditProductPage()
@@ -105,6 +113,8 @@ class CustomerController extends Controller
 
     public function showShoppingBagPage()
     {
-        return view('customers.profile_shopping_bag');
+        $shoppingBag = ShoppingBag::query()->with(['user', 'product', 'product.brand', 'product.category'])->where('user_id', Auth::user()->id)->get();
+
+        return view('customers.profile_shopping_bag', compact('shoppingBag'));
     }
 }

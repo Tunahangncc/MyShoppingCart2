@@ -17,6 +17,8 @@
     $i = 0;
     $fullName = Auth::user()->name;
     $nameArray = explode(' ', $fullName);
+
+    $userAddressInformation = getAddressInformation(Auth::user()->id);
     ?>
 
     <div class="profile-content-area profile-address-area flex justify-around">
@@ -32,26 +34,33 @@
                 <div class="flex flex-wrap">
                     <div class="w-full">
                         <label class="block mb-1" for="user_city">{{ __('messages.profile address form text.city') }}</label>
-                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="user_city"/>
+                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="user_city" name="city" value="{{ $userAddressInformation->neighbourhood }}"/>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap">
                     <div class="w-full">
                         <label class="block mb-1" for="user_district">{{ __('messages.profile address form text.district') }}</label>
-                        <select class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
+                        <select class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" name="district">
+                            <option value="{{ Str::slug($userAddressInformation->district, '-') }}" selected>{{ $userAddressInformation->district }}</option>
                             @foreach($districts as $district)
-                                <option value="{{ Str::slug($district, '-') }}">{{ $district }}</option>
+                                @if($district != $userAddressInformation->district)
+                                    <option value="{{ Str::slug($district, '-') }}">{{ $district }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap">
-                    <div class="w-full">
-                        <button type="submit" class="bg-blue-500 text-white p-2 transition duration-300 hover:bg-blue-700 rounded-md">
-                            <i class="fas fa-edit mr-2"></i>Edit Address
+                    <div class="w-full flex">
+                        <button type="submit" class="bg-blue-500 mr-2 text-white p-2 transition duration-300 hover:bg-blue-700 rounded-md">
+                            <i class="fas fa-edit mr-2"></i>{{ __('messages.profile address form text.edit address') }}
                         </button>
+
+                        @if(session('success-message'))
+                            <span class="bg-green-700 text-white p-2 rounded">{{ session('success-message') }}</span>
+                        @endif
                     </div>
                 </div>
             </form>
