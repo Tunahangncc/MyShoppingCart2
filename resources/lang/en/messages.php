@@ -131,6 +131,8 @@ return[
                 'warning message' => 'Warning Message',
                 'question message' => 'Question Message',
             ],
+            'success1' => 'Your message has been forwarded to the admins.',
+            'error1' => 'Please enter complete information',
         ],
     //----
 
