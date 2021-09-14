@@ -18,3 +18,8 @@ function getSubCategories()
 {
     return RelatedCategory::query()->with(['category'])->where('top_categories', '!=', 0)->get();
 }
+
+function getCategories()
+{
+    return Category::query()->where('parent_id', '!=', null)->get();
+}

@@ -1,4 +1,4 @@
-@extends('customers.layouts.master')
+ @extends('customers.layouts.master')
 
 @section('title')
     <title>{{ __('messages.invisible links.profile edit product') }}</title>
@@ -42,24 +42,29 @@
                         </thead>
 
                         <tbody>
-                        <tr>
-                            <td class="border border-gray-800" align="center">Galaxy A30</td>
-                            <td class="border border-gray-800" align="center">SAMSUNG</td>
-                            <td class="border border-gray-800" align="center"><img src="https://freepngimg.com/thumb/computer%20mouse/28-pc-mouse-png-image.png" alt="product image" class="w-20 h-20"></td>
-                            <td class="border border-gray-800" align="center">
-                                <a href="{{ route('customerProfileEditSelectedProduct', ['id' => 2]) }}" class="bg-blue-500 text-white transition duration-300 hover:bg-blue-700 p-2 rounded-md"><i class="fas fa-edit"></i></a>
-                            </td>
-                            <td class="border border-gray-800" align="center">
-                                <form action="{{ route('customerProfileDeleteProduct', ['id' => 2]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                        @if($myProducts != null)
+                            @foreach($myProducts as $myProduct)
+                                <tr>
+                                    <td class="border border-gray-800" align="center">{{ $myProduct->name }}</td>
+                                    <td class="border border-gray-800" align="center">{{ $myProduct->brand->name }}</td>
+                                    <td class="border border-gray-800" align="center"><img src="{{ asset('images/customer_images/product_images') }}/{{ $myProduct->image }}" alt="product image" class="w-20 h-20"></td>
+                                    <td class="border border-gray-800" align="center">
+                                        <a href="{{ route('customerProfileEditSelectedProduct', ['id' => $myProduct->id]) }}" class="bg-blue-500 text-white transition duration-300 hover:bg-blue-700 p-2 rounded-md"><i class="fas fa-edit"></i></a>
+                                    </td>
+                                    <td class="border border-gray-800" align="center">
+                                        <form action="{{ route('customerProfileDeleteProduct', ['id' => $myProduct->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
 
-                                    <button type="submit" class="bg-red-500 text-white transition duration-300 hover:bg-red-700 p-2 rounded-md"><i class="fas fa-minus-circle"></i></button>
-                                </form>
-                            </td>
-                        </tr>
+                                            <button type="submit" class="bg-red-500 text-white transition duration-300 hover:bg-red-700 p-2 rounded-md"><i class="fas fa-minus-circle"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
+                    {{ $myProducts->links() }}
                 </div>
             </div>
         </div>

@@ -55,6 +55,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $fillable = ['name', 'brand_id', 'price', 'amount', 'user_id', 'color_id', 'category_id', 'slug', 'image', 'uniq_code', 'number_of_likes', 'description'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

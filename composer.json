@@ -32,7 +32,10 @@
             "app/Helpers/ProductHelper.php",
             "app/Helpers/CategoryHelper.php",
             "app/Helpers/ShoppingBagHelper.php",
-            "app/Helpers/AddressHelper.php"
+            "app/Helpers/AddressHelper.php",
+            "app/Helpers/BrandHelper.php",
+            "app/Helpers/CustomerHelper.php",
+            "app/Helpers/ColorHelper.php"
         ]
     },
     "autoload-dev": {
