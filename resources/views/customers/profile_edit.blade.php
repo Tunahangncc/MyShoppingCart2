@@ -60,7 +60,7 @@
 
                     <div class="w-full px-2 md:w-1/2">
                         <label class="block mb-1" for="user_new_password">{{ __('messages.profile edit form text.new password') }}</label>
-                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" id="user_new_password" name="newPassword"/>
+                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="password" id="user_new_password" name="newPassword"/>
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@
 
                     <div class="w-full px-2 md:w-1/3">
                         <label class="block mb-1" for="user_birthday_month">{{ __('messages.profile edit form text.month') }}</label>
-                        <select class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
+                        <select class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" name="month">
                             @foreach($months as $monthKey => $month)
                                 <option value="{{ $monthKey }}">{{ $month }}</option>
                             @endforeach
@@ -121,10 +121,13 @@
                 </div>
 
                 <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-                    <div class="w-full px-2 md:w-1/3">
-                        <button type="submit" class="bg-blue-500 text-white transition duration-300 hover:bg-blue-700 p-2 rounded-md">
-                            <i class="fas fa-edit mr-2"></i>Edit Profile
+                    <div class="w-full px-2 flex">
+                        <button type="submit" class="bg-blue-500 mr-2 text-white transition duration-300 hover:bg-blue-700 p-2 rounded-md">
+                            <i class="fas fa-edit mr-2"></i>{{ __('messages.profile edit form text.edit profile') }}
                         </button>
+                        @if(session('success-message'))
+                            <span class="bg-green-700 p-2 rounded text-white">{{ __('messages.profile edit form text.'.session('success-message')) }}</span>
+                        @endif
                     </div>
                 </div>
             </form>

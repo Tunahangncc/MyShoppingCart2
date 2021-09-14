@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -31,6 +32,10 @@ class UserSeeder extends Seeder
                 'images' => ($gender == 'male') ? 'male_user_image.png' : 'female_user_image.png',
                 'created_at' => now(),
                 'updated_at' => now(),
+            ]);
+
+            Address::create([
+                'user_id' => $i + 1,
             ]);
         }
     }

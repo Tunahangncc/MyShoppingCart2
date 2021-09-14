@@ -13,9 +13,16 @@ class AuthenticationController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'type' => 'customer'])) 
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'type' => 'customer']))
         {
-            return redirect()->route('customerHome');
+            if(session('selected_product'))
+            {
+                return redirect(session('selected_product'));
+            }
+            else
+            {
+                return redirect()->route('customerHome');
+            }
         }
         else
         {

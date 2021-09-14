@@ -37,6 +37,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
  * @property-read int|null $products_count
  * @property-read \App\Models\ShoppingBag $shoppingBag
+ * @property string $date_of_birth
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDateOfBirth($value)
+ * @property-read \App\Models\Address $address
  */
 class User extends Authenticatable
 {
@@ -50,5 +53,10 @@ class User extends Authenticatable
     public function shoppingBag()
     {
         return $this->belongsTo(ShoppingBag::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }
