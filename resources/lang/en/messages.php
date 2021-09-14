@@ -277,6 +277,7 @@ return[
             'realised time' => 'Realised Time',
             'mark as read' => 'Mark As Read',
             'delete message' => 'Delete Message',
+            'success1' => 'message deleted successfully',
         ],
     //----
 

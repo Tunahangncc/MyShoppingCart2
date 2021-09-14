@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerAddProductRequest;
 use App\Models\Address;
 use App\Models\Color;
+use App\Models\MessageBox;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -174,13 +175,10 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function DeleteMessage()
+    public function DeleteMessage($id)
     {
-
-    }
-
-    public function ReadMessage()
-    {
-
+        MessageBox::query()->where('id', $id)->delete();
+        $myMessages = MessageBox::query()->with(['user'])->where('user_id', Auth::user()->id)->paginate(10);
+        return redirect()->back()->with(['success-message' => 'success1']);
     }
 }

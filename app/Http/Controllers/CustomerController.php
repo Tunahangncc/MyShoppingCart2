@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\MessageBox;
 use App\Models\Product;
 use App\Models\ShoppingBag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -112,7 +114,10 @@ class CustomerController extends Controller
 
     public function showMessageBoxPage()
     {
-        return view('customers.profile_message_box');
+        $myMessages = MessageBox::query()->with(['user'])->where('user_id', Auth::user()->id)->paginate(10);
+        return view('customers.profile_message_box', [
+            'myMessages' => $myMessages,
+        ]);
     }
 
     public function showShoppingBagPage()
