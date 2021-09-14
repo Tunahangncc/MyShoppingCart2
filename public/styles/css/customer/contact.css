@@ -1,19 +1,5 @@
-.contact-area{
-    height:70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.selectMessageType{
-    color: black;
-}
-
-.unSelectMessageType{
-    color: #8e8e8e;
-}
-
-.contact-area form button:hover i{
+form button:hover i{
     transform: translateY(-2px) translateX(2px);
 }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShoppingBagController;
+use App\Http\Controllers\ContactMessageController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -63,7 +64,10 @@ Route::group(['prefix' => 'customer'], function (){
             Route::post('products/add-product/{id}', [ProductController::class, 'addProductToCart'])->name('AddProductToCart');
 
             Route::get('product/like-product', [ProductController::class, 'likeProduct'])->name('LikeProduct');
-            //
+
+
+            //Contact Message Page
+            Route::post('contact', [ContactMessageController::class, 'sendMessage'])->name('SendMessagePost');
         });
     });
 
