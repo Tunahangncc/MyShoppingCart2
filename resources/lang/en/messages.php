@@ -236,6 +236,7 @@ return[
             'message' => [
                 'error1' => 'Please do not leave the brand field blank.',
                 'error2' => 'Please do not leave the category field blank.',
+                'success1' => 'The product has been successfully added',
             ],
         ],
     //----
@@ -263,6 +264,8 @@ return[
             'edit product' => 'Edit Product',
             'text1' => 'When changing the product name, please do not write the brand name.',
             'text2' => 'You can change the information we need to know about the product.',
+            'go back' => 'Go Back',
+            'success1' => 'The product has been successfully updated',
         ],
     //----
 
@@ -274,6 +277,7 @@ return[
             'realised time' => 'Realised Time',
             'mark as read' => 'Mark As Read',
             'delete message' => 'Delete Message',
+            'success1' => 'message deleted successfully',
         ],
     //----
 

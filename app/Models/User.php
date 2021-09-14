@@ -40,6 +40,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $date_of_birth
  * @method static \Illuminate\Database\Eloquent\Builder|User whereDateOfBirth($value)
  * @property-read \App\Models\Address $address
+ * @property-read \App\Models\MessageBox $messages
  */
 class User extends Authenticatable
 {
@@ -58,5 +59,10 @@ class User extends Authenticatable
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function messages()
+    {
+        return $this->belongsTo(MessageBox::class);
     }
 }

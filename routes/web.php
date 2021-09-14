@@ -55,7 +55,6 @@ Route::group(['prefix' => 'customer'], function (){
 
             Route::get('profile/message-box', [CustomerController::class, 'showMessageBoxPage'])->name('ProfileMessageBox');
             Route::delete('profile/message-box/delete-message/{id}', [ProfileController::class, 'DeleteMessage'])->name('ProfileMessageBoxMessageDelete');
-            Route::put('profile/message-box/read-message/{id}', [ProfileController::class, 'ReadMessage'])->name('ProfileMessageBoxReadMessage');
 
             Route::get('profile/shopping-bag', [CustomerController::class, 'showShoppingBagPage'])->name('ProfileShoppingBag');
             Route::get('profile/shopping-bag/order-now', [ShoppingBagController::class, 'orderNow'])->name('ProfileShoppingBagOrderNow');

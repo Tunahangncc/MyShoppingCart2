@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerAddProductRequest;
 use App\Models\Address;
 use App\Models\Color;
+use App\Models\MessageBox;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,41 +82,28 @@ class ProfileController extends Controller
             $productColorHex = $request->productColorHex;
             $productColorName = $request->productColorName;
             $productDescription = $request->productDescription;
-            $productImage = $request->file('productImage');
-
-            //Set Session
-            Session::put('product_name', $productName);
-            Session::put('product_brand', $productBrand);
-            Session::put('product_category', $productCategory);
-            Session::put('product_price', $productPrice);
-            Session::put('product_amount', $productAmount);
-            Session::put('product_color_hex', $productColorHex);
-            Session::put('product_color_name', $productColorName);
-            Session::put('product_description', $productDescription);
-            Session::put('product_image', $productImage);
-
-            //Set image
-            $imageName = '';
-            if($request->hasFile('productImage'))
-            {
-                $image = $request->file('productImage');
-                setProductImage($image);
-                $imageName = getProductImageName($image);
-            }
 
             //Check color
             $color = Color::query()->where('hex_code', $productColorHex)->first();
             if($color == null)
             {
                 $color = new Color;
-                $color->name = $productColorName;
+                $color->name = Str::upper($productColorName);
                 $color->hex_code = $productColorHex;
                 $color->created_at = now();
                 $color->updated_at = now();
                 $color->save();
             }
 
-
+            //Set Image
+            $imageName = '';
+            if($request->hasFile('productImage'))
+            {
+                $image = $request->file('productImage');
+                $imageName = $image->getClientOriginalName();
+                $destinationPath = public_path('images/customer_images/product_images');
+                $image->move($destinationPath, $imageName);
+            }
 
             //Add Product
             $uniqCode = Product::query()->orderBy('uniq_code', 'DESC')->first();
@@ -129,29 +117,68 @@ class ProfileController extends Controller
                 'category_id' => $productCategory,
                 'slug' => Str::slug($productName, '-'),
                 'image' => $imageName,
-                'uniq_code' => $uniqCode + 1,
+                'uniq_code' => $uniqCode->uniq_code + 1,
                 'description' => $productDescription
             ]);
+
+            return redirect()->back()->with(['success-message' => 'success1']);
         }
     }
 
-    public function EditSelectedProduct()
+    public function EditSelectedProduct($id, Request $request)
     {
+        //Check color
+        $color = Color::query()->where('hex_code', $request->productColorHex)->first();
+        if($color == null)
+        {
+            $color = new Color;
+            $color->name = Str::upper($request->productColorName);
+            $color->hex_code = $request->productColorHex;
+            $color->created_at = now();
+            $color->updated_at = now();
+            $color->save();
+        }
 
+        //Set Image
+        $imageName = '';
+        if($request->hasFile('productImage'))
+        {
+            $image = $request->file('productImage');
+            $imageName = $image->getClientOriginalName();
+            $destinationPath = public_path('images/customer_images/product_images');
+            $image->move($destinationPath, $imageName);
+        }
+        else
+        {
+            $productImage = Product::query()->where('id', $id)->first();
+            $imageName = $productImage->image;
+        }
+
+        Product::query()->where('id', $id)->update([
+            'name' => $request->productName,
+            'brand_id' => $request->productBrand,
+            'price' => $request->productPrice,
+            'amount' => $request->productAmount,
+            'color_id' => $color->id,
+            'category_id' => $request->productCategory,
+            'slug' => Str::slug($request->productName, '-'),
+            'image' => $imageName,
+            'description' => $request->productDescription
+        ]);
+
+        return redirect()->back()->with(['success-message' => 'success1']);
     }
 
-    public function DeleteProduct()
+    public function DeleteProduct($id)
     {
-
+        Product::query()->where('id', $id)->delete();
+        return redirect()->back();
     }
 
-    public function DeleteMessage()
+    public function DeleteMessage($id)
     {
-
-    }
-
-    public function ReadMessage()
-    {
-
+        MessageBox::query()->where('id', $id)->delete();
+        $myMessages = MessageBox::query()->with(['user'])->where('user_id', Auth::user()->id)->paginate(10);
+        return redirect()->back()->with(['success-message' => 'success1']);
     }
 }

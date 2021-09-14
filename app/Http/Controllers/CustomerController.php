@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\MessageBox;
 use App\Models\Product;
 use App\Models\ShoppingBag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,27 +90,34 @@ class CustomerController extends Controller
 
     public function showProfileAddProductPage()
     {
-        $brands = Brand::all();
-        $categories = Category::query()->where('parent_id', '!=', null)->get();
         return view('customers.profile_add_product', [
-            'brands' => $brands,
-            'categories' => $categories
+            'brands' => getBrands(),
+            'categories' => getCategories()
         ]);
     }
 
     public function showProfileEditProductPage()
     {
-        return view('customers.profile_edit_product');
+        return view('customers.profile_edit_product', [
+            'myProducts' => getMyProduct(),
+        ]);
     }
 
-    public function showProfileEditSelectedProductPage()
+    public function showProfileEditSelectedProductPage($id)
     {
-        return view('customers.profile_edit_selected_product');
+        return view('customers.profile_edit_selected_product', [
+            'brands' => getBrands(),
+            'categories' => getCategories(),
+            'selectedProduct' => Product::query()->with(['user', 'brand', 'color', 'category'])->where('id', $id)->first(),
+        ]);
     }
 
     public function showMessageBoxPage()
     {
-        return view('customers.profile_message_box');
+        $myMessages = MessageBox::query()->with(['user'])->where('user_id', Auth::user()->id)->paginate(10);
+        return view('customers.profile_message_box', [
+            'myMessages' => $myMessages,
+        ]);
     }
 
     public function showShoppingBagPage()
