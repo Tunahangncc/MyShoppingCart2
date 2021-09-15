@@ -1,5 +1,6 @@
 <?php
 
+//Customer Controller
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\CustomerController;
@@ -9,6 +10,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShoppingBagController;
 use App\Http\Controllers\ContactMessageController;
+
+//Admin Controller
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -75,4 +79,12 @@ Route::group(['prefix' => 'customer'], function (){
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::name('admin')->group(function () {
+        Route::get('dashboard', [AdminController::class, 'showDashboardPage'])->name('Dashboard');
+
+        Route::get('profile-settings', [AdminController::class, 'showProfileSettingsPage'])->name('ProfileSettings');
+    });
 });
