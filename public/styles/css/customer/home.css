@@ -83,6 +83,10 @@
     .slider-grid-type{
         padding: 30px;
     }
+
+    .show-products-button{
+        margin-bottom: 30px;
+    }
 }
 
 @media only screen and (max-width: 640px) {
@@ -94,6 +98,10 @@
     .content-area .slider-area .slider-grid-type .slide-ul{
         margin-top: 75px;
         padding: 30px;
+    }
+
+    .show-products-button{
+        margin-bottom: 30px;
     }
 }
 

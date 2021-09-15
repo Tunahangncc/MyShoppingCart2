@@ -1,11 +1,18 @@
 
 
+@media (max-width: 892px) {
+    .edit-product{
+        height: 300vh;
+    }
 
-
+    .profile-edit-product-area{
+        padding: 20px;
+    }
+}
 
 @media (max-width: 500px) {
     .profile-content-area{
-        height: 90vh;
+        height: 150vh;
     }
 
     .profile-content-area .profile-edit-product-area{

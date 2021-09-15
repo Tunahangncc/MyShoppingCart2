@@ -27,12 +27,15 @@ Route::group(['prefix' => 'customer'], function (){
 
         Route::get('products/category/{id}', [CategoryController::class, 'showSelectedCategory'])->name('ShowSelectedCategory');
 
+        Route::get('products/top-user/{id}', [CustomerController::class, 'showTopUserProducts'])->name('ShowTopUserProducts');
+
         Route::middleware(['isLogin'])->group(function () {
             //Login
             Route::get('login', [CustomerController::class, 'showLoginPage'])->name('Login');
             Route::post('login', [AuthenticationController::class, 'customerLoginPost'])->name('LoginPost');
 
             Route::get('register', [CustomerController::class, 'showRegisterPage'])->name('Register');
+            Route::post('register', [AuthenticationController::class, 'customerRegisterPost'])->name('RegisterPost');
         });
 
         Route::middleware(['isCustomer'])->group(function () {

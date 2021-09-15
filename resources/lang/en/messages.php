@@ -10,6 +10,7 @@ return[
         'profile edit product' => 'Profile | Edit Product',
         'profile message box' => 'Profile | Message Box',
         'profile shopping bag' => 'Profile | Shopping Bag',
+        'top user products' => 'Top User Products',
     ],
 
     //Navbar
@@ -157,7 +158,9 @@ return[
             'gender' => 'Gender',
             'male' => 'Male',
             'female' => 'Female',
-            'gender' => 'Gender',
+            'error1' => 'Passwords do not match',
+            'error2' => 'This e-mail is registered in the system',
+            'success1' => 'Your registration has been successfully created',
         ],
 
         'login return message' => [
