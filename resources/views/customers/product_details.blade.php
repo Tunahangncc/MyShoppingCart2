@@ -11,10 +11,12 @@
 
 @section('content')
 
-    <div class="grid md:grid-cols-2 sm:grid-cols-1">
+    <div class="product-details-area grid md:grid-cols-2 sm:grid-cols-1">
         <div class="wrapper">
             <div>
-                <img src="{{ asset('images/customer_images/product_images') }}/{{ $selectedProduct->image }}" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" style="height: 600px">
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/customer_images/product_images') }}/{{ $selectedProduct->image }}" alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" style="height: 600px">
+                </div>
 
                 <div class="relative px-4 -mt-8">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -47,9 +49,9 @@
                                 @csrf
                                 <div class="flex justify-around items-center mr-2">
                                     <input type="hidden" id="selected-product-amount" value="{{ $selectedProduct->amount }}">
-                                    <label class="increase-the-amount mr-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">+</label>
+                                    <label class="reduce-the-amount mr-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">-</label>
                                     <input type="text" name="productAmount" id="selected-product-amount-text" class="bg-gray-500 w-14 p-1 text-white font-bold text-center rounded" value="0" readonly>
-                                    <label class="reduce-the-amount ml-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">-</label>
+                                    <label class="increase-the-amount ml-2 bg-gray-800 py-1 px-2 w-7 text-center cursor-pointer text-white font-bold rounded hover:bg-gray-700 transition duration-300">+</label>
                                 </div>
                                 <button type="submit" class="add-basket-button bg-gray-500 text-white p-2 rounded hover:bg-gray-800 transition duration-300">
                                     <i class="fas fa-shopping-basket mr-2"></i>{{ __('messages.product details card.add shopping bag') }}
@@ -62,7 +64,7 @@
         </div>
 
         <div class="product-properties">
-            <div class="p-20 md:w-full">
+            <div class="body p-20 md:w-full">
                 <h3 class="text-blue-300 mb-4 md:text-2xl sm:text-md font-bold">
                     {{ __('messages.properties text.product properties') }}
                 </h3>

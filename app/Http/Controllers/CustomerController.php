@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\MessageBox;
 use App\Models\Product;
 use App\Models\ShoppingBag;
+use App\Models\ShoppingHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,13 @@ class CustomerController extends Controller
 {
     public function showHomePage()
     {
-        $topProducts = Product::query()->with(['category'])->select('*')->orderBy('number_of_likes', 'DESC')->take(4)->get();
+        $topProducts = Product::query()->with(['category', 'user'])->select('*')->orderBy('number_of_likes', 'DESC')->take(4)->get();
+        $topUser = ShoppingHistory::query()->with(['user'])->orderBy('total_expenditure', 'DESC')->first();
 
-        return view('customers.home', compact('topProducts'));
+        return view('customers.home', [
+            'topProducts' => $topProducts,
+            'topUser' => $topUser,
+        ]);
     }
 
     public function showProductsPage()
@@ -125,5 +130,15 @@ class CustomerController extends Controller
         $shoppingBag = ShoppingBag::query()->with(['user', 'product', 'product.brand', 'product.category'])->where('user_id', Auth::user()->id)->get();
 
         return view('customers.profile_shopping_bag', compact('shoppingBag'));
+    }
+
+    public function showTopUserProducts($id)
+    {
+        $products = Product::query()->where('user_id', $id)->paginate(15);
+
+        return view('customers.topUserProducts', [
+            'products' => $products,
+            'productCount' => getMyProductCount($id)->productCount,
+        ]);
     }
 }

@@ -1,0 +1,16 @@
+.profile-page a{
+    background-color: #BA55D3;
+    transition: 0.5s;
+}
+
+.profile-page a i{
+    transition: 0.5s;
+}
+
+.profile-page a:hover{
+    background-color: #9932CC;
+}
+
+.profile-page a:hover i{
+    transform: translateX(-2px);
+}

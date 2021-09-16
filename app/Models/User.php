@@ -42,10 +42,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \App\Models\Address $address
  * @property-read \App\Models\MessageBox $messages
  * @property-read \App\Models\CustomerContact $contactMessage
+ * @property-read \App\Models\ShoppingHistory $shoppingHistory
  */
 class User extends Authenticatable
 {
     use HasFactory;
+    protected $fillable = ['name', 'email', 'password', 'gender', 'slug', 'images', ''];
 
     public function products()
     {
@@ -59,7 +61,7 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->belongsTo(Address::class);
+        return $this->hasOne(Address::class);
     }
 
     public function messages()
@@ -70,5 +72,10 @@ class User extends Authenticatable
     public function contactMessage()
     {
         return $this->belongsTo(CustomerContact::class);
+    }
+
+    public function shoppingHistory()
+    {
+        return $this->hasOne(ShoppingHistory::class);
     }
 }

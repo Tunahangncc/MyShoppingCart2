@@ -25,7 +25,7 @@ class isLogin
             }
             else if(Auth::user()->type == 'admin')
             {
-
+                return redirect()->route('adminDashboard');
             }
         }
 

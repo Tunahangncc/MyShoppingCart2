@@ -13,7 +13,7 @@
 
 <div class="h-screen flex justify-center items-center md:mb-10">
     <div class="bg-white rounded-lg md:w-2/3 w-full px-16 py-16">
-        <form action="#" method="POST">
+        <form action="{{ route('customerRegisterPost') }}" method="POST">
             @csrf
 
             <div class="flex font-bold justify-center">
@@ -22,6 +22,11 @@
             </div>
 
             <h2 class="text-3xl text-center text-gray-700 mb-4">{{ __('messages.register form text.welcome to the club') }}</h2>
+            @if(session('success-message'))
+                <h4 class="text-md text-center text-white bg-green-700 p-1 rounded">{{ __('messages.register form text.'.session('success-message')) }}</h4>
+            @elseif(session('error-message'))
+                <h4 class="text-md text-center text-white bg-red-700 p-1 rounded">{{ __('messages.register form text.'.session('error-message')) }}</h4>
+            @endif
 
             <div class="input-div border-b-2 relative grid my-5 py-1 focus:outline-none" style="grid-template-columns: 7% 93%;">
                 <div class="i">
@@ -30,8 +35,8 @@
 
                 <div class="div">
                     <h5>{{ __('messages.register form text.first name') }}</h5>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                         style="background:none;"
                         name="firstName"
@@ -46,8 +51,8 @@
 
                 <div class="div">
                     <h5>{{ __('messages.register form text.last name') }}</h5>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                         style="background:none;"
                         name="lastName"
@@ -62,8 +67,8 @@
 
                 <div class="div">
                     <h5>{{ __('messages.login form text.email address') }}</h5>
-                    <input 
-                        type="email" 
+                    <input
+                        type="email"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                         style="background:none;"
                         name="email"
@@ -78,7 +83,7 @@
 
                 <div class="div">
                     <h5>{{ __('messages.login form text.password') }}</h5>
-                    <input 
+                    <input
                         type="password"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                         style="background:none;"
@@ -86,7 +91,7 @@
                     >
                 </div>
             </div>
-            
+
             <div class="input-div border-b-2 relative grid my-5 py-1 focus:outline-none" style="grid-template-columns: 7% 93%;">
                 <div class="i">
                     <i class="fas fa-lock"></i>
@@ -94,8 +99,8 @@
 
                 <div class="div">
                     <h5>{{ __('messages.register form text.confirm password') }}</h5>
-                    <input 
-                        type="text" 
+                    <input
+                        type="password"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                         style="background:none;"
                         name="confirmPassword"
@@ -109,9 +114,9 @@
                 </div>
 
                 <div class="div">
-                    <select 
-                        name="gender" 
-                        style="background:none;" 
+                    <select
+                        name="gender"
+                        style="background:none;"
                         class="absolute w-full h-full py-2 px-3 outline-none inset-0 text-gray-700"
                     >
                         <option value="gender" selected>{{ __('messages.register form text.gender') }}</option>

@@ -60,7 +60,7 @@
                 <div class="product-card container mx-auto max-w-sm w-80 mb-6 bg-white rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition-all duration-500">
                     <div class="flex items-center justify-between px-4">
                         <div class="flex justify-between items-center py-4">
-                            <img class="w-12 rounded-full" src="{{ asset('images/customer_images/general_images') }}/{{ $product->user->images }}" alt="user image" />
+                            <img class="w-12 rounded-full" src="{{ asset('images/customer_images/profile_images') }}/{{ $product->user->images }}" alt="user image" />
 
                             <div class="ml-3">
                                 <h1 class="text-xl font-bold text-gray-800 cursor-pointer">{{ $product->user->name }}</h1>
