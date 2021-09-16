@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isLogin
+class isAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,16 +17,9 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check())
+        if(!Auth::check())
         {
-            if(Auth::user()->type == 'customer')
-            {
-                return redirect()->route('customerHome');
-            }
-            else if(Auth::user()->type == 'admin')
-            {
-                return redirect()->route('adminDashboard');
-            }
+            return redirect()->route('adminLogin');
         }
 
         return $next($request);

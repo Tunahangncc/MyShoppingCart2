@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CustomerLoginRequest;
+use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Support\Str;
 
 class AuthenticationController extends Controller
@@ -78,6 +79,18 @@ class AuthenticationController extends Controller
             {
                 return redirect()->back()->with(['error-message' => 'error2']);
             }
+        }
+    }
+
+    public function adminLoginPost(AdminLoginRequest $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'type' => 'admin']))
+        {
+            return redirect()->route('adminDashboard');
+        }
+        else
+        {
+            return redirect()->route('adminLogin')->with(['error-message' => 'error']);
         }
     }
 }

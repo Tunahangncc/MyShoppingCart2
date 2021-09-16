@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactMessageController;
 
 //Admin Controller
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductOperationsController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -83,8 +84,30 @@ Route::group(['prefix' => 'customer'], function (){
 
 Route::group(['prefix' => 'admin'], function () {
     Route::name('admin')->group(function () {
-        Route::get('dashboard', [AdminController::class, 'showDashboardPage'])->name('Dashboard');
+        Route::middleware(['isLogin'])->group(function () {
+            //Login
+            Route::get('login', [AdminController::class, 'showLoginPage'])->name('Login');
+            Route::post('login', [AuthenticationController::class, 'adminLoginPost'])->name('LoginPost');
+        });
 
-        Route::get('profile-settings', [AdminController::class, 'showProfileSettingsPage'])->name('ProfileSettings');
+        Route::middleware(['isAdmin'])->group(function () {
+            Route::get('dashboard', [AdminController::class, 'showDashboardPage'])->name('Dashboard');
+
+            Route::get('profile/customer/{id}', [AdminController::class, 'showCustomerProfilePage'])->name('CustomerProfilePage');
+
+            Route::get('product/details/{id}', [AdminController::class, 'showSelectedProductDetailsPage'])->name('SelectedProductDetails');
+
+            Route::get('profile-settings', [AdminController::class, 'showProfileSettingsPage'])->name('ProfileSettings');
+
+            Route::get('website-users', [AdminController::class, 'showWebsiteUsersPage'])->name('WebsiteUsers');
+
+            Route::get('product-operations', [AdminController::class, 'showProductOperationsPage'])->name('ProductOperations');
+
+            Route::get('product-operations/edit-product/{id}', [AdminController::class, 'showSelectedProductEditPage'])->name('ProductOperationsEdit');
+
+            Route::get('category-operations', [AdminController::class, 'showCategoryOperationsPage'])->name('CategoryOperations');
+
+            Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');
+        });
     });
 });

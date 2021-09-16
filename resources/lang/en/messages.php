@@ -306,4 +306,65 @@ return[
             ],
         ],
     //----
+
+//Admin Static Word
+
+    //Login Page Text
+    'login page text' => [
+        'error' => 'Admin not found !',
+    ],
+    //----
+
+    //Customer Profile Page
+    'customer profile page text' => [
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+        'total expenditure' => 'Total Expenditure',
+        'total product' => 'Total Product',
+        'go back' => 'Go Back',
+    ],
+    //----
+
+    //Dashboard Page
+    'dashboard page text' => [
+        'dashboard' => 'Dashboard',
+        'top users' => 'Top Users',
+        'user table' => [
+            'user name' => 'User Name',
+            'user email' => 'User Email',
+            'number of products added' => 'Number Of Products Added',
+            'show user' => 'Show User',
+        ],
+        'top products' => 'Top Products',
+        'product table' => [
+            'product name' => 'Product Name',
+            'number of likes' => 'Number Of Likes',
+            'show product' => 'Show Product',
+        ],
+    ],
+    //----
+
+    //Product Details Page
+    'product details page text' => [
+        'number of likes' => 'Number Of Likes',
+        'amount' => 'Amount',
+        'brand' => 'Brand',
+        'price' => 'Price',
+        'owner' => 'Owner',
+        'color' => 'Color',
+        'category' => 'Category',
+        'uniq code' => 'Uniq Code',
+        'description' => 'Description',
+    ],
+    //----
+
+    //Widgets Card Stats
+    'widget card stats text' => [
+        'total products' => 'Total Products',
+        'total users' => 'Total Users',
+        'total sales' => 'Total Sales',
+    ],
+    //----
+
 ];

@@ -40,123 +40,110 @@
                                 <button
                                     class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="button">
-                                    Settings
+                                    Information
                                 </button>
                             </div>
                         </div>
                         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
                             <form>
-                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                                    User Information
-                                </h6>
+                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">User Information</h6>
+
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
-                                                Username
+                                                Admin Type
                                             </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="lucky.jesse" />
+
+                                            <input  type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="Super Admin"
+                                                    name="type"/>
                                         </div>
                                     </div>
+
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
                                                 Email address
                                             </label>
-                                            <input type="email"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="jesse@example.com" />
+
+                                            <input  type="email"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="jesse@example.com"
+                                                    name="email"/>
                                         </div>
                                     </div>
+
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
                                                 First Name
                                             </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="Lucky" />
+
+                                            <input  type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="Lucky"
+                                                    name="firstName"/>
                                         </div>
                                     </div>
+
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
                                                 Last Name
                                             </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="Jesse" />
+
+                                            <input  type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="Jesse"
+                                                    name="lastName"/>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                                    Contact Information
-                                </h6>
+                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Contact Information</h6>
+
                                 <div class="flex flex-wrap">
-                                    <div class="w-full lg:w-12/12 px-4">
+                                    <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
-                                                Address
+                                                Neighbourhood
                                             </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" />
+                                            <input  type="email"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="New York"
+                                                    name="neighbourhood"/>
                                         </div>
                                     </div>
-                                    <div class="w-full lg:w-4/12 px-4">
+
+                                    <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
-                                                City
+                                                District
                                             </label>
-                                            <input type="email"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="New York" />
-                                        </div>
-                                    </div>
-                                    <div class="w-full lg:w-4/12 px-4">
-                                        <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
-                                                Country
-                                            </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="United States" />
-                                        </div>
-                                    </div>
-                                    <div class="w-full lg:w-4/12 px-4">
-                                        <div class="relative w-full mb-3">
-                                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
-                                                Postal Code
-                                            </label>
-                                            <input type="text"
-                                                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                   value="Postal Code" />
+                                            <input  type="text"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    value="United States"
+                                                    name="district"/>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                                    About Me
-                                </h6>
+                                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">About Me</h6>
+
                                 <div class="flex flex-wrap">
                                     <div class="w-full lg:w-12/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
                                                 About me
                                             </label>
-                                            <textarea type="text"
-                                                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                                      rows="4">
-                                A beautiful UI Kit and Admin for JavaScript & Tailwind CSS. It is Free
-                                and Open Source.
-                              </textarea>
+
+                                            <textarea  type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="aboutMe" style="max-height: 200px; min-width: 100%; max-width: 100%; min-height: 100px">A beautiful UI Kit and Admin for JavaScript & Tailwind CSS. It is Free and Open Source.</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -164,54 +151,32 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="w-full lg:w-4/12 px-4">
                     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
                         <div class="px-6">
                             <div class="flex flex-wrap justify-center">
                                 <div class="w-full px-4 flex justify-center">
                                     <div class="relative">
-                                        <img alt="..." src="{{ asset('styles/css/admin/images/team-2-800x800.jpg') }}"
-                                             class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
+                                        <img alt="..." src="{{ asset('styles/css/admin/images/team-2-800x800.jpg') }}" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
                                     </div>
                                 </div>
-                                <div class="w-full px-4 text-center mt-20">
-                                    <div class="flex justify-center py-4 lg:pt-4 pt-8">
-                                        <div class="mr-4 p-3 text-center">
-                        <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          22
-                        </span>
-                                            <span class="text-sm text-blueGray-400">Friends</span>
-                                        </div>
-                                        <div class="mr-4 p-3 text-center">
-                        <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          10
-                        </span>
-                                            <span class="text-sm text-blueGray-400">Photos</span>
-                                        </div>
-                                        <div class="lg:mr-4 p-3 text-center">
-                        <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          89
-                        </span>
-                                            <span class="text-sm text-blueGray-400">Comments</span>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <div class="w-full px-4 text-center mt-20"></div>
                             </div>
                             <div class="text-center mt-12">
                                 <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                                     Jenna Stones
                                 </h3>
+
                                 <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                                     <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                                     Los Angeles, California
                                 </div>
+
                                 <div class="mb-2 text-blueGray-600 mt-10">
                                     <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                                    Solution Manager - Creative Tim Officer
-                                </div>
-                                <div class="mb-2 text-blueGray-600">
-                                    <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                                    University of Computer Science
+                                    Super Admin - Create Project
                                 </div>
                             </div>
                             <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -224,9 +189,6 @@
                                             giving it a warm, intimate feel with a solid groove
                                             structure. An artist of considerable range.
                                         </p>
-                                        <a href="javascript:void(0);" class="font-normal text-pink-500">
-                                            Show more
-                                        </a>
                                     </div>
                                 </div>
                             </div>

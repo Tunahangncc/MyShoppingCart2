@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ asset('styles/css/admin/tailwind.css') }}">
+    @yield('specialCSS')
 
     <title>Dashboard | Notus JS by Creative Tim</title>
 </head>
@@ -73,16 +74,9 @@
                     </li>
 
                     <li class="items-center">
-                        <a href="./tables.html" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                        <a href="{{ route('adminWebsiteUsers') }}" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                             <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                            Tables
-                        </a>
-                    </li>
-
-                    <li class="items-center">
-                        <a href="./maps.html" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
-                            <i class="fas fa-map-marked mr-2 text-sm text-blueGray-300"></i>
-                            Maps
+                            Website Users
                         </a>
                     </li>
                 </ul>
@@ -93,46 +87,21 @@
                 <hr class="my-4 md:min-w-full"/>
                 <!-- Heading -->
                 <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    Auth Layout Pages
+                    Product And Category Operations Page
                 </h6>
                 <!-- Navigation -->
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                     <li class="items-center">
-                        <a href="../auth/login.html" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
+                        <a href="{{ route('adminProductOperations') }}" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                             <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-                            Login
+                            Product Operation
                         </a>
                     </li>
 
                     <li class="items-center">
-                        <a href="../auth/register.html" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
+                        <a href="{{ route('adminCategoryOperations') }}" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                             <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                            Register
-                        </a>
-                    </li>
-                </ul>
-
-
-
-                <!-- Divider -->
-                <hr class="my-4 md:min-w-full"/>
-                <!-- Heading -->
-                <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    No Layout Pages
-                </h6>
-                <!-- Navigation -->
-                <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-                    <li class="items-center">
-                        <a href="../landing.html" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                            <i class="fas fa-newspaper text-blueGray-300 mr-2 text-sm"></i>
-                            Landing Page
-                        </a>
-                    </li>
-
-                    <li class="items-center">
-                        <a href="../profile.html" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                            <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
-                            Profile Page
+                            Category Operation
                         </a>
                     </li>
                 </ul>

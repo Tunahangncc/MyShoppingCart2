@@ -1,0 +1,15 @@
+.user-table a i{
+    transition: 0.5s;
+}
+
+.user-table a:hover i{
+    transform: rotate(180deg) scale(0.7);
+}
+
+.product-table a i{
+    transition: 0.5s;
+}
+
+.product-table a:hover i{
+    transform: rotate(180deg) scale(0.7);
+}

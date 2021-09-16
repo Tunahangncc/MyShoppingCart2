@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Models\User;
 
 function getMyProduct()
 {
@@ -10,4 +11,9 @@ function getMyProduct()
 function getMyProductCount($id)
 {
     return Product::query()->selectRaw('count(*) as productCount')->where('user_id', $id)->first();
+}
+
+function getUserCount()
+{
+    return count(User::all());
 }

@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->belongsTo(Address::class);
+        return $this->hasOne(Address::class);
     }
 
     public function messages()
@@ -76,6 +76,6 @@ class User extends Authenticatable
 
     public function shoppingHistory()
     {
-        return $this->belongsTo(ShoppingHistory::class);
+        return $this->hasOne(ShoppingHistory::class);
     }
 }
