@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('gender');
-            $table->string('date_of_birth')->default('---');
+            $table->string('date_of_birth')->default('00/Feb/0000');
             $table->string('slug');
             $table->string('images');
             $table->string('type')->default('customer');

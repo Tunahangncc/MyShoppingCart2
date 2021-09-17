@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Address;
+use App\Models\AdminInformations;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -50,6 +52,19 @@ class CreateAdminCommand extends Command
          $user->created_at = now();
          $user->updated_at = now();
          $user->save();
+
+         $information = new AdminInformations;
+         $information->user_id = $user->id;
+         $information->type = Str::slug('Süper Admin', '-');
+         $information->status = 'Create Project';
+         $information->about = 'Empty';
+         $information->save();
+
+         $address = new Address;
+         $address->user_id = $user->id;
+         $address->neighbourhood = '---';
+         $address->district = '---';
+         $address->save();
 
         return 0;
     }

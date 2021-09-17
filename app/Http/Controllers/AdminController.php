@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminInformations;
 use App\Models\Product;
 use App\Models\ShoppingHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -40,7 +42,17 @@ class AdminController extends Controller
 
     public function showProfileSettingsPage()
     {
-        return view('admins.profile_settings');
+        $adminInformation = AdminInformations::query()->with(['user', 'user.address'])->where('user_id', Auth::user()->id)->first();
+        $months = array(
+            'Jan' => 'January', 'Feb' => 'February', 'Mar' => 'March', 'Apr' => 'April',
+            'May' => 'May', 'June' => 'June', 'July' => 'July', 'Aug' => 'August',
+            'Sep' => 'September', 'Oct' => 'October', 'Nov' => 'November', 'Dec' => 'December'
+        );
+
+        return view('admins.profile_settings', [
+            'adminInformation' => $adminInformation,
+            'months' => $months,
+        ]);
     }
 
     public function showWebsiteUsersPage()

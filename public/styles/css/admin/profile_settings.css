@@ -1,0 +1,60 @@
+
+.edit-my-account form button i{
+    transition: 0.5s;
+}
+
+.edit-my-account form button:hover i{
+    animation-iteration-count: 1;
+    animation: shake 0.5s;
+}
+
+
+.success-message-span{
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    background-size: 100% 400%;
+    animation: gradientSuccessBackground 24s ease infinite, zoom 0.7s;
+    color: white;
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.error-message-span{
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    background-size: 100% 400%;
+    animation: gradientErrorBackground 24s ease infinite, zoom 0.7s;
+    color: white;
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+
+@keyframes shake {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}
+
+@keyframes gradientSuccessBackground {
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0 50%}
+}
+@keyframes gradientErrorBackground {
+    0%{background-position:0% 45%}
+    50%{background-position:100% 56%}
+    100%{background-position:0% 45%}
+}
+
+
+@keyframes zoom {
+    0% {
+        transform: scale(.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#000000"/>
 
-    <link rel="shortcut icon" href="{{ asset('styles/css/admin/images/favicon.ico') }}"/>
+    <link rel="shortcut icon" href="{{ asset('images/admin_images/general_images/favicon.ico') }}"/>
     <link
         rel="apple-touch-icon"
         sizes="76x76"
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('styles/css/admin/tailwind.css') }}">
     @yield('specialCSS')
 
-    <title>Dashboard | Notus JS by Creative Tim</title>
+    @yield('title')
 </head>
 <body class="text-blueGray-700 antialiased">
 
