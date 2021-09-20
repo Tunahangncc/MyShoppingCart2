@@ -17,3 +17,51 @@ function getUserCount()
 {
     return count(User::all());
 }
+
+function getMonthName($monthSlug)
+{
+    $monthName = "";
+    switch ($monthSlug)
+    {
+        case 'Jan':
+            $monthName = 'January';
+            break;
+        case 'Feb':
+            $monthName = 'February';
+            break;
+        case 'Mar':
+            $monthName = 'March';
+            break;
+        case 'Apr':
+            $monthName = 'April';
+            break;
+        case 'May':
+            $monthName = 'May';
+            break;
+        case 'June':
+            $monthName = 'June';
+            break;
+        case 'July':
+            $monthName = 'July';
+            break;
+        case 'Aug':
+            $monthName = 'August';
+            break;
+        case 'Sep':
+            $monthName = 'September';
+            break;
+        case 'Oct':
+            $monthName = 'October';
+            break;
+        case 'Nov':
+            $monthName = 'November';
+            break;
+        case 'Dec':
+            $monthName = 'December';
+            break;
+        default:
+            $monthName = '';
+    }
+
+    return $monthName;
+}

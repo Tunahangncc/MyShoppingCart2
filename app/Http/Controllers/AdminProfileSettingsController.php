@@ -13,6 +13,8 @@ class AdminProfileSettingsController extends Controller
 {
     public function updateProfile(Request $request)
     {
+        $updateProfile = false;
+
         if($request->email != Auth::user()->email)
         {
             $checkEmail = User::query()->where('email', $request->email)->first();
@@ -22,23 +24,46 @@ class AdminProfileSettingsController extends Controller
             }
         }
 
-        $userName = $request->firstName . ' '. $request->lastName;
-        User::query()->where('id', Auth::user()->id)->update([
-            'name' => $userName,
-            'email' => $request->email,
-            'slug' => Str::slug($userName, '-'),
-        ]);
+        if($request->oldPassword != null && $request->newPassword != null)
+        {
+            if(Auth::attempt(['email' => $request->email, 'password' => $request->oldPassword]))
+            {
+                $updateProfile = true;
+            }
+            else
+            {
+                return redirect()->back()->with(['error-message' => 'error2']);
+            }
+        }
+        else{ $updateProfile = true; }
 
-        AdminInformations::query()->where('user_id', Auth::user()->id)->update([
-            'type' => $request->type,
-            'about' => $request->aboutMe,
-        ]);
+        if($updateProfile == true)
+        {
+            $user = User::query()->where('id', Auth::user()->id)->first();
+            $information = AdminInformations::query()->where('user_id', Auth::user()->id)->first();
+            $address = Address::query()->where('user_id', Auth::user()->id)->first();
+            $userName = $request->firstName . ' '. $request->lastName;
 
-        Address::query()->where('user_id', Auth::user()->id)->update([
-            'neighbourhood' => $request->neighbourhood,
-            'district' => $request->district,
-        ]);
+            //Update User
+            $user->name = $userName;
+            $user->email = $request->email;
+            $user->password = ($request->newPassword == null) ? Auth::user()->password : bcrypt($request->newPassword);
+            $user->gender = $request->gender;
+            $user->date_of_birth = $request->day.'/'.$request->month.'/'.$request->year;
+            $user->slug = Str::slug($userName, '-');
+            $user->save();
 
-        return redirect()->back()->with(['success-message' => 'success1']);
+            //Update Information
+            $information->type = $request->type;
+            $information->about = $request->aboutMe;
+            $information->save();
+
+            //Update Address
+            $address->neighbourhood = $request->neighbourhood;
+            $address->district = $request->district;
+            $address->save();
+
+            return redirect()->back()->with(['success-message' => 'success1']);
+        }
     }
 }

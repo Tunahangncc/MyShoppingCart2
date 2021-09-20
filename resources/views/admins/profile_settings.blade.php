@@ -102,7 +102,6 @@
                                                     name="firstName"/>
                                         </div>
                                     </div>
-
                                     <div class="w-full lg:w-6/12 px-4">
                                         <div class="relative w-full mb-3">
                                             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
@@ -138,10 +137,10 @@
                                                 {{ __('messages.profile settings page text.year')}}
                                             </label>
 
-                                            <input  type="number" min="1972" max="{{ date('Y') }}"
+                                            <input  type="number" max="{{ date('Y') }}"
                                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     name="year"
-                                                    value="{{ $dateArray[0] }}"/>
+                                                    value="{{ $dateArray[2] }}"/>
                                         </div>
                                     </div>
                                     <div class="w-full lg:w-4/12 px-4">
@@ -152,7 +151,7 @@
 
                                             <select name="month"
                                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                                <option value="{{ $dateArray[1] }}">February</option>
+                                                <option value="{{ $dateArray[1] }}">{{ getMonthName($dateArray[1]) }}</option>
                                                 @foreach($months as $montKey => $month)
                                                     @if($montKey != $dateArray[1])
                                                         <option value="{{ $montKey }}">{{ $month }}</option>
@@ -167,10 +166,35 @@
                                                 {{ __('messages.profile settings page text.day')}}
                                             </label>
 
-                                            <input  type="number" min="1" max="30"
+                                            <input  type="number" max="30"
                                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                     name="day"
-                                                    value="{{ $dateArray[2] }}"/>
+                                                    value="{{ $dateArray[0] }}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full lg:w-6/12 px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                                                {{ __('messages.profile settings page text.old password')}}
+                                            </label>
+
+                                            <input  type="password"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    name="oldPassword"
+                                                    />
+                                        </div>
+                                    </div>
+                                    <div class="w-full lg:w-6/12 px-4">
+                                        <div class="relative w-full mb-3">
+                                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                                                {{ __('messages.profile settings page text.new password')}}
+                                            </label>
+
+                                            <input  type="password"
+                                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                    name="newPassword"
+                                                    />
                                         </div>
                                     </div>
                                 </div>
@@ -263,6 +287,14 @@
                                 <div class="mb-2 text-blueGray-600 mt-10">
                                     <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
                                     {{ $adminInformation->type }} / {{ $adminInformation->status }}
+                                </div>
+                                <div class="mb-2 text-blueGray-600 mt-10">
+                                    <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                                    {{ $adminInformation->user->gender }}
+                                </div>
+                                <div class="mb-2 text-blueGray-600 mt-10">
+                                    <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                                    {{ $dateArray[2] }} / {{ getMonthName($dateArray[1]) }} / {{ $dateArray[0] }}
                                 </div>
                             </div>
                             <div class="mt-10 py-10 border-t border-blueGray-200 text-center">

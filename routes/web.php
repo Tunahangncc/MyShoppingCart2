@@ -110,6 +110,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('category-operations', [AdminController::class, 'showCategoryOperationsPage'])->name('CategoryOperations');
 
             Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');
+
+            Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
         });
     });
 });

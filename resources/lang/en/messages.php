@@ -65,6 +65,7 @@ return[
             'male' => 'Male',
             'female' => 'Female',
             'see products' => 'See Products',
+            'not available' => 'Not Available',
         ],
 
         'slide2' => [
@@ -390,6 +391,9 @@ return[
         'update profile' => 'Update Profile',
         'success1' => 'Profile successfully updated',
         'error1' => 'This e-mail address is in use',
+        'error2' => 'You entered your old password incorrectly',
+        'old password' => 'Old Password',
+        'new password' => 'New Password',
     ],
     //----
 
