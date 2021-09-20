@@ -65,6 +65,7 @@ return[
             'male' => 'Male',
             'female' => 'Female',
             'see products' => 'See Products',
+            'not available' => 'Not Available',
         ],
 
         'slide2' => [
@@ -364,6 +365,35 @@ return[
         'total products' => 'Total Products',
         'total users' => 'Total Users',
         'total sales' => 'Total Sales',
+    ],
+    //----
+
+    //Profile Settings Page
+    'profile settings page text' => [
+        'dashboard' => 'Dashboard',
+        'my account' => 'My Account',
+        'user information' => 'User Information',
+        'admin type' => 'Admin Type',
+        'email address' => 'E-Mail Address',
+        'first name' => 'First Name',
+        'last name' => 'Last Name',
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+        'year' => 'Year',
+        'month' => 'Month',
+        'day' => 'Day',
+        'contact information' => 'Contact Information',
+        'neighbourhood' => 'Neighbourhood',
+        'district' => 'District',
+        'about me' => 'About Me',
+        'about information' => 'About Information',
+        'update profile' => 'Update Profile',
+        'success1' => 'Profile successfully updated',
+        'error1' => 'This e-mail address is in use',
+        'error2' => 'You entered your old password incorrectly',
+        'old password' => 'Old Password',
+        'new password' => 'New Password',
     ],
     //----
 

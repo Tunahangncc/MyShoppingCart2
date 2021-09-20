@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactMessageController;
 //Admin Controller
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductOperationsController;
+use App\Http\Controllers\AdminProfileSettingsController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -98,6 +99,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('product/details/{id}', [AdminController::class, 'showSelectedProductDetailsPage'])->name('SelectedProductDetails');
 
             Route::get('profile-settings', [AdminController::class, 'showProfileSettingsPage'])->name('ProfileSettings');
+            Route::put('profile-settings', [AdminProfileSettingsController::class, 'updateProfile'])->name('ProfileSettingsPut');
 
             Route::get('website-users', [AdminController::class, 'showWebsiteUsersPage'])->name('WebsiteUsers');
 
@@ -108,6 +110,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('category-operations', [AdminController::class, 'showCategoryOperationsPage'])->name('CategoryOperations');
 
             Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');
+
+            Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
         });
     });
 });

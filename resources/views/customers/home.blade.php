@@ -76,16 +76,23 @@
                                             <h1 class="flex justify-center mb-5 font-bold text-xl">{{ __('messages.slide1.top user') }}</h1>
 
                                             <ul>
-                                                <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user name') }}: {{ $topUser->user->name }}</li>
-                                                <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user email') }}: {{ $topUser->user->email }}</li>
-                                                <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user gender') }}: {{ __('messages.slide1.'.$topUser->user->gender) }}</li>
-                                                <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.number of products owned by the user') }}: {{ getMyProductCount($topUser->user->id)->productCount }}</li>
-                                                <li class="mt-5 show-products-button">
-                                                    <a href="{{ route('customerShowTopUserProducts', ['id' => $topUser->user->id]) }}" class="see-top-user-products-button bg-blue-900 text-white p-2 hover:bg-blue-700 rounded transition duration-300">
-                                                        <i class="fas fa-shopping-bag mr-2 transition duration-300"></i>
-                                                        {{ __('messages.slide1.see products') }}
-                                                    </a>
-                                                </li >
+                                                @if(isset($topUser))
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user name') }}: {{ $topUser->user->name }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user email') }}: {{ $topUser->user->email }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.user gender') }}: {{ __('messages.slide1.'.$topUser->user->gender) }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.number of products owned by the user') }}: {{ getMyProductCount($topUser->user->id)->productCount }}</li>
+                                                    <li class="mt-5 show-products-button">
+                                                        <a href="{{ route('customerShowTopUserProducts', ['id' => $topUser->user->id]) }}" class="see-top-user-products-button bg-blue-900 text-white p-2 hover:bg-blue-700 rounded transition duration-300">
+                                                            <i class="fas fa-shopping-bag mr-2 transition duration-300"></i>
+                                                            {{ __('messages.slide1.see products') }}
+                                                        </a>
+                                                    </li>
+                                                @else
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.not available') }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.not available') }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.not available') }}</li>
+                                                    <li class="mt-5 text-md"><i class="fas fa-chevron-right mr-2"></i>{{ __('messages.slide1.not available') }}</li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
