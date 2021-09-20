@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('styles/css/admin/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/css/admin/customer_profile.css') }}">
 
-    <title>Customer Profile</title>
+    <title>Admin Profile</title>
 </head>
 <body class="text-blueGray-700 antialiased">
 
@@ -44,7 +44,7 @@
                     <div class="flex flex-wrap justify-center">
                         <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                             <div class="relative">
-                                <img alt="user image" src="{{ asset('images/customer_images/profile_images') }}/{{ $customer->images }}" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
+                                <img alt="admin image" src="{{ asset('images/admin_images/profile_images') }}/{{ $admin->images }}" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"/>
                             </div>
                         </div>
 
@@ -53,19 +53,7 @@
                         <div class="w-full lg:w-4/12 px-4 lg:order-1">
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center">
-                                    <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        @if(empty($customer->shoppingHistory->total_expenditure))
-                                            00
-                                        @else
-                                            {{ $customer->shoppingHistory->total_expenditure }}
-                                        @endif
-                                    </span>
-
-                                    <span class="text-sm text-blueGray-400">{{ __('messages.customer profile page text.total expenditure') }}</span>
-                                </div>
-
-                                <div class="mr-4 p-3 text-center">
-                                    <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{ getMyProductCount($customer->id)->productCount }}</span>
+                                    <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{ getMyProductCount($admin->id)->productCount }}</span>
 
                                     <span class="text-sm text-blueGray-400">{{ __('messages.customer profile page text.total product') }}</span>
                                 </div>
@@ -74,21 +62,21 @@
                     </div>
 
                     <div class="text-center mt-12">
-                        <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">{{ $customer->name }}</h3>
+                        <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">{{ $admin->name }}</h3>
 
                         <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                             <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                            {{ $customer->address->district }}, {{ $customer->address->neighbourhood }}
+                            {{ $admin->address->district }}, {{ $admin->address->neighbourhood }}
                         </div>
 
                         <div class="mb-2 text-blueGray-600 mt-10">
                             <i class="fas fa-venus-mars mr-2 text-lg text-blueGray-400"></i>
-                            {{ __('messages.customer profile page text.'.$customer->gender) }}
+                            {{ __('messages.customer profile page text.'.$admin->gender) }}
                         </div>
 
                         <div class="mb-2 text-blueGray-600">
                             <i class="fas fa-at mr-2 text-lg text-blueGray-400"></i>
-                            {{ $customer->email }}
+                            {{ $admin->email }}
                         </div>
 
                         <div class="mb-2 text-blueGray-600">

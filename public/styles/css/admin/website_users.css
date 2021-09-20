@@ -1,0 +1,50 @@
+.admins-table a i{
+    transition: 0.5s;
+}
+
+.admins-table a:hover i{
+    transform: rotate(180deg) scale(0.7);
+}
+
+.users-table a i{
+    transition: 0.5s;
+}
+
+.users-table a:hover i{
+    transform: rotate(180deg) scale(0.7);
+}
+
+.users-table-area nav{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 8px;
+}
+
+.users-table-area nav span{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-radius: 4px !important;
+}
+
+.admins-table-area nav{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 8px;
+}
+
+.admins-table-area nav span{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-radius: 4px !important;
+}
+
+.message-area{
+    padding: 10px;
+}
+.message-area span{
+    padding: 5px;
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}

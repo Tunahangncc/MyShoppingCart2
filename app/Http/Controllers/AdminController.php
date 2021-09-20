@@ -31,6 +31,15 @@ class AdminController extends Controller
         ]);
     }
 
+    public function showAdminProfilePage($id)
+    {
+        $admin = User::query()->with(['address'])->where('id', $id)->first();
+
+        return view('admins.admin_profile', [
+            'admin' => $admin,
+        ]);
+    }
+
     public function showSelectedProductDetailsPage($id)
     {
         $product = Product::query()->with(['color', 'user', 'brand', 'category'])->where('id', $id)->first();
@@ -57,7 +66,13 @@ class AdminController extends Controller
 
     public function showWebsiteUsersPage()
     {
-        return view('admins.website_users');
+        $admins = User::query()->with(['adminInformation'])->where('type', 'admin')->paginate(5);
+        $users = User::query()->where('type', 'customer')->paginate(5);
+
+        return view('admins.website_users', [
+            'users' => $users,
+            'admins' => $admins,
+        ]);
     }
 
     public function showProductOperationsPage()

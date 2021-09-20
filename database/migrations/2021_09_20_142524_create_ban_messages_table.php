@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminInformationsTable extends Migration
+class CreateBanMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateAdminInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_informations', function (Blueprint $table) {
+        Schema::create('ban_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('type');
-            $table->string('status');
-            $table->string('about');
-            $table->string('permissions');
-            $table->timestamps();
+            $table->string('message_title');
+            $table->string('message_body');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -33,6 +30,6 @@ class CreateAdminInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_informations');
+        Schema::dropIfExists('ban_messages');
     }
 }

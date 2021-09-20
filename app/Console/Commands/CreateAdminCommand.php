@@ -57,6 +57,7 @@ class CreateAdminCommand extends Command
          $information->user_id = $user->id;
          $information->type = Str::slug('Süper Admin', '-');
          $information->status = 'Create Project';
+         $information->permissions = 'delete/create/add/update';
          $information->about = 'Empty';
          $information->save();
 

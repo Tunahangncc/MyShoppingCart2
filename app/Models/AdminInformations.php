@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property string $status
  * @method static \Illuminate\Database\Eloquent\Builder|AdminInformations whereStatus($value)
+ * @property string $permissions
+ * @method static \Illuminate\Database\Eloquent\Builder|AdminInformations wherePermissions($value)
  */
 class AdminInformations extends Model
 {
