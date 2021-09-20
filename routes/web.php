@@ -15,6 +15,7 @@ use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductOperationsController;
 use App\Http\Controllers\AdminProfileSettingsController;
+use App\Http\Controllers\AdminWebsiteUsersController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -95,6 +96,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('dashboard', [AdminController::class, 'showDashboardPage'])->name('Dashboard');
 
             Route::get('profile/customer/{id}', [AdminController::class, 'showCustomerProfilePage'])->name('CustomerProfilePage');
+            Route::get('profile/admin/{id}', [AdminController::class, 'showAdminProfilePage'])->name('AdminProfilePage');
 
             Route::get('product/details/{id}', [AdminController::class, 'showSelectedProductDetailsPage'])->name('SelectedProductDetails');
 
@@ -102,6 +104,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('profile-settings', [AdminProfileSettingsController::class, 'updateProfile'])->name('ProfileSettingsPut');
 
             Route::get('website-users', [AdminController::class, 'showWebsiteUsersPage'])->name('WebsiteUsers');
+            Route::get('website-users/delete/admin/{id}', [AdminWebsiteUsersController::class, 'deleteAdmin'])->name('DeleteAdmin');
+            Route::get('website-users/delete/user/{id}', [AdminWebsiteUsersController::class, 'deleteUser'])->name('DeleteUser');
 
             Route::get('product-operations', [AdminController::class, 'showProductOperationsPage'])->name('ProductOperations');
 

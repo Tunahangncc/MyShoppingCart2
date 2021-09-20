@@ -397,4 +397,35 @@ return[
     ],
     //----
 
+    //Website Users Page
+    'website users page text' => [
+        'dashboard' => 'Dashboard',
+        'admins table' => 'Admins Table',
+        'admin name' => 'Admin Name',
+        'admin email' => 'Admin E-Mail',
+        'status' => 'Status',
+        'admin image' => 'Admin Images',
+        'show details' => 'Show details',
+        'delete admin' => 'Delete Admin',
+        'users table' => 'Users Table',
+        'user name' => 'User Name',
+        'user email' => 'User E-Mail',
+        'user status' => 'User Status',
+        'gender' => 'Gender',
+        'ban user' => 'Ban User',
+        'male' => 'Male',
+        'female' => 'Female',
+        'delete admin operation message' => [
+            'error1' => "You can't delete yourself",
+            'error2' => "You can't delete super-user",
+            'error3' => "You do not have permission to delete",
+            'success1' => 'The deletion was successful',
+        ],
+        'delete user operation message' => [
+            'error1' => "You do not have permission to delete",
+            'success1' => 'You have banned the user',
+        ],
+    ],
+    //----
+
 ];

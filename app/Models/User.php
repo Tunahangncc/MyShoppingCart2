@@ -44,6 +44,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \App\Models\CustomerContact $contactMessage
  * @property-read \App\Models\ShoppingHistory $shoppingHistory
  * @property-read \App\Models\AdminInformations $adminInformation
+ * @property-read \App\Models\BanMessage|null $banMessage
  */
 class User extends Authenticatable
 {
@@ -82,6 +83,11 @@ class User extends Authenticatable
 
     public function adminInformation()
     {
-        return $this->belongsTo(AdminInformations::class);
+        return $this->hasOne(AdminInformations::class);
+    }
+
+    public function banMessage()
+    {
+        return $this->hasOne(BanMessage::class);
     }
 }
