@@ -428,4 +428,47 @@ return[
     ],
     //----
 
+    //Product Operations Page
+    'product operations page text' => [
+        'dashboard' => 'Dashboard',
+        'create product' => 'Create Product',
+        'product information' => 'Product Information',
+        'product name' => 'Product Name',
+        'product price' => 'Product Price',
+        'product amount' => 'Product Amount',
+        'product brand' => 'Product Brand',
+        'product category' => 'Product Category',
+        'color information' => 'Color Information',
+        'product color - hex color' => 'Product Color - Hex Color',
+        'product color - name' => 'Product Color - Name',
+        'product description' => 'Product Description',
+        'product image' => 'Product Image',
+        'choose image' => 'Choose Image',
+        'products table' => 'Products Table',
+        'edit product' => 'Edit Product',
+        'delete product' => 'Delete Product',
+        'success1' => 'The product has been successfully created',
+        'success2' => 'The product has been successfully deleted',
+    ],
+
+    'product operations edit page text' => [
+        'dashboard' => 'Dashboard',
+        'edit product' => 'Edit Product',
+        'product information' => 'Product Information',
+        'product name' => 'Product Name',
+        'product price' => 'Product Price',
+        'product amount' => 'Product Amount',
+        'product brand' => 'Product Brand',
+        'product category' => 'Product Category',
+        'color information' => 'Color Information',
+        'product color - hex color' => 'Product Color - Hex Color',
+        'product color - name' => 'Product Color - Name',
+        'product description' => 'Product Description',
+        'product image' => 'Product Image',
+        'choose image' => 'Choose Image',
+        'go back' => 'Go Back',
+        'success1' => 'The product has been successfully updated',
+    ],
+    //----
+
 ];

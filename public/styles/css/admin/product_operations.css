@@ -1,0 +1,65 @@
+.message-area{
+    padding: 20px;
+}
+.message-area span{
+    padding: 5px;
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.create-product-button{
+    position: relative;
+}
+.create-product-button .first-icon{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.create-product-button .second-icon{
+    position: absolute;
+    margin: 2px -19px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.create-product-button:hover .first-icon{
+    animation-name: first_spin;
+    animation-duration: 1s;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0s, opacity 300ms;
+}
+.create-product-button:hover .second-icon{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+    animation-name: second_spin;
+    animation-duration: 1s;
+}
+
+.products-table-area a:hover i{
+    animation-name: shake;
+    animation-duration: 0.7s;
+}
+.products-table-area button:hover i{
+    animation-name: shake;
+    animation-duration: 0.7s;
+}
+
+@keyframes first_spin {
+    from{ transform: rotate(0deg) }
+    to{ transform: rotate(360deg)}
+}
+@keyframes second_spin {
+    from{ transform: rotate(0deg)}
+    to{ transform: rotate(360deg);}
+}
+@keyframes shake {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}
