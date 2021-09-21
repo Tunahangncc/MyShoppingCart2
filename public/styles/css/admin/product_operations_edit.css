@@ -1,0 +1,25 @@
+.message-area{
+    padding: 20px;
+}
+.message-area span{
+    padding: 5px;
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+form button:hover i{
+    animation-name: shake;
+    animation-duration: 0.7s;
+}
+
+
+@keyframes shake {
+    0%{transform: rotate(-6deg)}
+    30%{transform: rotate(8deg)}
+    50%{transform: rotate(-8deg)}
+    70%{transform: rotate(6deg)}
+    100%{transform: rotate(-8deg)}
+}
+

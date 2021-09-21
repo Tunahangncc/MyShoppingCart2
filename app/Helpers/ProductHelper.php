@@ -16,3 +16,8 @@ function productCount()
 {
     return count(Product::query()->with(['user', 'brand', 'color', 'category'])->select('*')->get());
 }
+
+function getPaginateProducts($count)
+{
+    return Product::query()->with(['user', 'brand', 'color', 'category'])->select('*')->paginate($count);
+}

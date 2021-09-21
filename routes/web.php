@@ -107,10 +107,19 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('website-users/delete/admin/{id}', [AdminWebsiteUsersController::class, 'deleteAdmin'])->name('DeleteAdmin');
             Route::get('website-users/delete/user/{id}', [AdminWebsiteUsersController::class, 'deleteUser'])->name('DeleteUser');
 
+            //Product Operations
             Route::get('product-operations', [AdminController::class, 'showProductOperationsPage'])->name('ProductOperations');
 
-            Route::get('product-operations/edit-product/{id}', [AdminController::class, 'showSelectedProductEditPage'])->name('ProductOperationsEdit');
+            Route::post('product-operations/create-product', [AdminProductOperationsController::class, 'createProduct'])->name('ProductOperationsCreateProduct');
 
+            Route::get('product-operations/edit-product/{id}', [AdminController::class, 'showSelectedProductEditPage'])->name('ProductOperationsEdit');
+            Route::put('product-operations/edit-product/{id}', [AdminProductOperationsController::class, 'updateProduct'])->name('ProductOperationsEditPut');
+
+            Route::delete('product-operations/delete-product/{id}', [AdminProductOperationsController::class, 'deleteProduct'])->name('ProductOperationsDeleteProduct');
+
+            Route::get('product-operations/go-back', [AdminController::class, 'returnProductOperations'])->name('ReturnProductOperations');
+
+            //---
             Route::get('category-operations', [AdminController::class, 'showCategoryOperationsPage'])->name('CategoryOperations');
 
             Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');

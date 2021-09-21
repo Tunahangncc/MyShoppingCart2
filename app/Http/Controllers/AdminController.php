@@ -77,12 +77,23 @@ class AdminController extends Controller
 
     public function showProductOperationsPage()
     {
-        return view('admins.product_operations');
+        \Session::put('page', \request()->fullUrl());
+        $products = Product::query()->with(['user', 'color', 'brand', 'category'])->orderBy('created_at', 'DESC')->paginate(7);
+        return view('admins.product_operations', [
+            'brands' => getBrands(),
+            'categories' => getCategories(),
+            'products' => $products,
+        ]);
     }
 
-    public function showSelectedProductEditPage()
+    public function showSelectedProductEditPage($id)
     {
-        return view('admins.product_operations_edit');
+        $product = Product::query()->with(['user', 'color', 'category', 'brand'])->where('id', $id)->firstOrFail();
+        return view('admins.product_operations_edit', [
+            'product' => $product,
+            'brands' => getBrands(),
+            'categories' => getCategories(),
+        ]);
     }
 
     public function showCategoryOperationsPage()
@@ -98,5 +109,10 @@ class AdminController extends Controller
     public function showLoginPage()
     {
         return view('admins.login');
+    }
+
+    public function returnProductOperations()
+    {
+        return redirect(session('page'));
     }
 }
