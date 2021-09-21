@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class RelatedCategory extends Model
 {
     use HasFactory;
+    protected $fillable = ['category_id', 'top_categories'];
 
     public function category()
     {

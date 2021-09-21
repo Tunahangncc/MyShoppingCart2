@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminInformations;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ShoppingHistory;
 use App\Models\User;
@@ -98,12 +99,22 @@ class AdminController extends Controller
 
     public function showCategoryOperationsPage()
     {
-        return view('admins.category_operations');
+        $categories = Category::query()->with(['relatedCategory', 'parentCategory'])->where('parent_id', '!=', null)->paginate(10);
+
+        return view('admins.category_operations', [
+            'categories' => getCategories(),
+            'allCategory' => $categories,
+        ]);
     }
 
-    public function showSelectedCategoryEditPage()
+    public function showSelectedCategoryEditPage($id)
     {
-        return view('admins.category_operations_edit');
+        $category = Category::query()->with(['parentCategory'])->where('id', $id)->first();
+        $categories = Category::all();
+        return view('admins.category_operations_edit', [
+            'category' => $category,
+            'categories' => $categories,
+        ]);
     }
 
     public function showLoginPage()

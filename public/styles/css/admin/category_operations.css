@@ -1,0 +1,10 @@
+.message-area{
+    padding: 20px;
+}
+.message-area span{
+    padding: 5px;
+    background: linear-gradient(267deg, #cd49d4, #e135bc);
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
