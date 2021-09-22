@@ -20,7 +20,15 @@
     <link rel="stylesheet" href="{{ asset('styles/css/admin/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/css/admin/customer_profile.css') }}">
 
-    <title>Customer Profile</title>
+    <title>Product Details</title>
+
+    <style type="text/css">
+        @media (max-width: 768px) {
+            .short-description{
+                margin-top: 60px;
+            }
+        }
+    </style>
 </head>
 <body class="text-blueGray-700 antialiased">
 
@@ -50,7 +58,7 @@
 
                         <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"></div>
 
-                        <div class="w-full lg:w-4/12 px-4 lg:order-1">
+                        <div class="short-description w-full lg:w-4/12 px-4 lg:order-1">
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{{ $product->number_of_likes }}</span>

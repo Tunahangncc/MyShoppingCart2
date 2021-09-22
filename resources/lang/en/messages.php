@@ -484,8 +484,11 @@ return[
         'edit category' => 'Edit Category',
         'delete category' => 'Delete Category',
         'main category' => 'Main Category',
+        'main categories' => 'Main Categories',
+        'select subcategory parent or select main category parent' => 'Select Subcategory Parent Or Select Main Category Parent',
         'error1' => 'You cannot leave the category name blank.',
         'success1' => 'Category created successfully',
+        'success2' => 'Category successfully deleted',
     ],
 
     'category operations edit page text' => [
@@ -495,6 +498,7 @@ return[
         'category name' => 'Category Name',
         'select parent category' => 'Select Parent Category',
         'go back' => 'Go Back',
+        'success1' => 'Category successfully updated',
     ],
     //----
 

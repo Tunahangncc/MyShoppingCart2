@@ -8,3 +8,43 @@
     font-weight: bold;
     color: white;
 }
+
+.create-category-button{
+    position: relative;
+}
+.create-category-button .first-icon{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.create-category-button .second-icon{
+    position: absolute;
+    margin: 2px -19px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.create-category-button:hover .first-icon{
+    animation-name: first_spin;
+    animation-duration: 1s;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0s, opacity 300ms;
+}
+.create-category-button:hover .second-icon{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+    animation-name: second_spin;
+    animation-duration: 1s;
+}
+
+
+@keyframes first_spin {
+    from{ transform: rotate(0deg) }
+    to{ transform: rotate(360deg)}
+}
+@keyframes second_spin {
+    from{ transform: rotate(0deg)}
+    to{ transform: rotate(360deg);}
+}

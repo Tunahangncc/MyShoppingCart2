@@ -23,7 +23,7 @@
                                     class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
                                     <img alt="admin image"
                                          class="w-full rounded-full align-middle border-none shadow-lg"
-                                         src="{{ asset('styles/css/admin/images/team-1-800x800.jpg') }}"/>
+                                         src="{{ asset('images/admin_images/profile_images/'.Auth::user()->images) }}"/>
                                 </span>
                         </div>
                     </a>
@@ -90,9 +90,9 @@
                                 </div>
 
                                 <button
-                                    class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                    class="create-category-button bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit">
-                                    {{ __('messages.category operations page text.create category') }}
+                                    <i class="first-icon fas fa-plus mr-2"></i><i class="second-icon fas fa-plus-circle mr-2"></i>{{ __('messages.category operations page text.create category') }}
                                 </button>
                             </form>
 
@@ -107,7 +107,7 @@
                     </div>
                 </div>
 
-                <div class="w-full lg:w-5/12 px-4">
+                <div class="category-table-area w-full lg:w-5/12 px-4">
                     <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-pink-900 text-white">
                         <div class="rounded-t mb-0 px-4 py-3 border-0">
                             <div class="flex flex-wrap items-center">
@@ -167,16 +167,23 @@
                                         </td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             <div class="flex items-center">
-                                                <a href="#" class="bg-indigo-500 text-white px-2 py-1 rounded font-bold"><i class="fas fa-trash"></i></a>
+                                                <form action="{{ route('adminCategoryOperationsDeleteCategory', ['id' => $category->id]) }}" method="POST">
+                                                    @csrf @method('DELETE')
+
+                                                    <button type="submit" class="bg-indigo-500 text-white px-2 py-1 rounded font-bold">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
-                                <tr>
-                                    {{ $allCategory->links() }}
-                                </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="table-paginate-link">
+                            {{ $allCategory->links()}}
                         </div>
                     </div>
                 </div>

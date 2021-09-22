@@ -20,10 +20,17 @@ class AdminCategoryOperationsController extends Controller
             $category = new Category;
             $category->name = $request->name;
             $category->slug = Str::slug($request->name, '-');
-            $category->parent_id = ($request->parentCategory == "mainCategory") ? null : $request->mainCategory;
+            $category->parent_id = ($request->parentCategory == "mainCategory") ? null : $request->parentCategory;
             $category->created_at = now();
             $category->updated_at = now();
             $category->save();
+
+            if($category->parent_id != null)
+            {
+                $mainCategory = RelatedCategory::query()->where('category_id', $category->parent_id)->first();
+                $mainCategory->top_categories .= ','.$category->id;
+                $mainCategory->save();
+            }
 
             RelatedCategory::create([
                 'category_id' => $category->id,
@@ -34,27 +41,80 @@ class AdminCategoryOperationsController extends Controller
         }
     }
 
-    public function editCategory($id)
+    public function editCategory($id, Request $request)
     {
-        $categoryInformation = Category::query()->with(['childrenCategories', 'parentCategory'])->where('id', $id)->first();
-        $subCategories = explode(',', RelatedCategory::query()->where('category_id', $id)->first());
+        $selectedCategory = Category::query()->with(['childrenCategories'])->where('id', $id)->first();
+        $mainCategory = RelatedCategory::query()->where('category_id', $selectedCategory->parent_id)->first();
 
-        $parentCategory = RelatedCategory::query()->where('category_id', $categoryInformation->parentCategory->id)->first();
-        $list = explode(',', $parentCategory->top_categories);
-        $newList = [];
+        //get subcategories of selected category
+        $selectedCategorySubList = [];
+        $selectedCategorySubList = $this->getChildren($selectedCategory);
+        array_push($selectedCategorySubList, $selectedCategory->id);
 
-        //Ana kategoriden alt kategorileri silme
-        foreach ($subCategories as $category)
+        //get subcategories of main category
+        $mainCategorySubList = explode(',', $mainCategory->top_categories);
+        $newSubList = [];
+        for ($i=0; $i<count($mainCategorySubList); $i++)
         {
-            foreach ($list as $item)
+            if(!in_array($mainCategorySubList[$i], $selectedCategorySubList))
             {
-                if($category != $item && !in_array($item, $newList))
-                {
-                    array_push($newList, $item);
-                }
+                array_push($newSubList, $mainCategorySubList[$i]);
             }
         }
 
-        dd($newList);
+        //Update Old Main Category
+        $topCategories = '';
+        for ($i=0; $i<count($newSubList); $i++)
+        {
+            if($i < (count($newSubList) - 1))
+            {
+                $topCategories .= $newSubList[$i].',';
+            }
+            else
+            {
+                $topCategories .= $newSubList[$i];
+            }
+        }
+        $mainCategory->top_categories = $topCategories;
+        $mainCategory->save();
+
+        //Update Main Category
+        $selectedNewMainCategory = RelatedCategory::query()->with(['category'])->where('category_id', $request->parentCategory)->first();
+        $selectedNewMainCategorySubList = $selectedNewMainCategory->top_categories;
+        $oldCategoryID = '';
+        for ($i=0; $i<count($selectedCategorySubList); $i++)
+        {
+            if($i < (count($selectedCategorySubList) - 1))
+            {
+                $oldCategoryID .= $selectedCategorySubList[$i].',';
+            }
+            else
+            {
+                $oldCategoryID .= $selectedCategorySubList[$i];
+            }
+        }
+        $selectedNewMainCategory->top_categories = $selectedNewMainCategorySubList.','.$oldCategoryID;
+        $selectedNewMainCategory->save();
+
+        $selectedCategory->parent_id = $selectedNewMainCategory->id;
+        $selectedCategory->save();
+
+        return redirect()->back()->with(['success-message' => 'success1']);
+    }
+    private function getChildren($category)
+    {
+        $ids = [];
+        foreach ($category->childrenCategories as $cat) {
+            $ids[] = $cat->id;
+            $ids = array_merge($ids, $this->getChildren($cat));
+        }
+        return $ids;
+    }
+
+    public function deleteCategory($id)
+    {
+        Category::query()->where('id', $id)->delete();
+
+        return redirect()->back()->with(['success-message' => 'success2']);
     }
 }

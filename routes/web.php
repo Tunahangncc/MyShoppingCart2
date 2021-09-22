@@ -128,6 +128,10 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');
             Route::put('category-operations/edit-category/{id}', [AdminCategoryOperationsController::class, 'editCategory'])->name('CategoryOperationsEditPut');
 
+            Route::delete('category-operations/delete-category/{id}', [AdminCategoryOperationsController::class, 'deleteCategory'])->name('CategoryOperationsDeleteCategory');
+
+            Route::get('category-operations/go-back', [AdminController::class, 'returnCategoryOperations'])->name('ReturnCategoryOperations');
+
             Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
         });
     });

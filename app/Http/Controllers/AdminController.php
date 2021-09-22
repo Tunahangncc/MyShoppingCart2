@@ -99,10 +99,12 @@ class AdminController extends Controller
 
     public function showCategoryOperationsPage()
     {
-        $categories = Category::query()->with(['relatedCategory', 'parentCategory'])->where('parent_id', '!=', null)->paginate(10);
+        \Session::put('page', \request()->fullUrl());
+        $categories = Category::query()->whereNotNull('parent_id')->orderBy('id')->paginate(10);
+        $selectItems = Category::all();
 
         return view('admins.category_operations', [
-            'categories' => getCategories(),
+            'categories' => $selectItems,
             'allCategory' => $categories,
         ]);
     }
@@ -123,6 +125,10 @@ class AdminController extends Controller
     }
 
     public function returnProductOperations()
+    {
+        return redirect(session('page'));
+    }
+    public function returnCategoryOperations()
     {
         return redirect(session('page'));
     }

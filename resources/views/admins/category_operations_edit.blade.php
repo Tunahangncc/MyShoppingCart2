@@ -1,5 +1,13 @@
 @extends('admins.layouts.master')
 
+@section('specialCSS')
+    <link rel="stylesheet" href="{{ asset('styles/css/admin/category_operation_edit.css') }}">
+@endsection
+
+@section('title')
+    <title>Category Operation | Edit</title>
+@endsection
+
 @section('content')
     <div class="relative md:ml-64 bg-blueGray-50">
         <nav
@@ -15,7 +23,7 @@
                                     class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
                                     <img alt="admin image"
                                          class="w-full rounded-full align-middle border-none shadow-lg"
-                                         src="{{ asset('styles/css/admin/images/team-1-800x800.jpg') }}"/>
+                                         src="{{ asset('images/admin_images/profile_images/'.Auth::user()->images) }}"/>
                                 </span>
                         </div>
                     </a>
@@ -43,8 +51,8 @@
                                     {{ __('messages.category operations edit page text.edit category') }}
                                 </h6>
 
-                                <a href="#"
-                                   class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+                                <a href="{{ route('adminReturnCategoryOperations') }}"
+                                   class="go-back bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
                                     <i class="fas fa-chevron-circle-left mr-2"></i>{{ __('messages.category operations edit page text.go back') }}
                                 </a>
                             </div>
@@ -80,7 +88,7 @@
                                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                                 <option value="{{ $category->parent_id}}" selected>{{ $category->parentCategory->name}}</option>
                                                 @foreach($categories as $categoryItem)
-                                                    @if($categoryItem->id != $category->parentCategory->id)
+                                                    @if($categoryItem->id != $category->parentCategory->id && $categoryItem->name != $category->name)
                                                         <option value="{{ $categoryItem->id }}">{{ $categoryItem->name }}</option>
                                                     @endif
                                                 @endforeach
@@ -92,9 +100,15 @@
                                 <button
                                     class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="submit">
-                                    {{ __('messages.category operations edit page text.edit category') }}
+                                    <i class="fas fa-edit mr-2"></i>{{ __('messages.category operations edit page text.edit category') }}
                                 </button>
                             </form>
+
+                            <div class="message-area">
+                                @if(session('success-message'))
+                                    <span>{{ __('messages.category operations edit page text.'.session('success-message')) }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
