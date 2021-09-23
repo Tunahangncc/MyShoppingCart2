@@ -25,11 +25,13 @@ class AdminCategoryOperationsController extends Controller
             $category->updated_at = now();
             $category->save();
 
-            if($category->parent_id != null)
+            $categoryParents = $this->getParent($category);
+
+            foreach ($categoryParents as $categoryParent)
             {
-                $mainCategory = RelatedCategory::query()->where('category_id', $category->parent_id)->first();
-                $mainCategory->top_categories .= ','.$category->id;
-                $mainCategory->save();
+                $parentCategory = RelatedCategory::query()->where('category_id', $categoryParent)->first();
+                $parentCategory->top_categories .= ','.$category->id;
+                $parentCategory->save();
             }
 
             RelatedCategory::create([
@@ -109,6 +111,16 @@ class AdminCategoryOperationsController extends Controller
             $ids = array_merge($ids, $this->getChildren($cat));
         }
         return $ids;
+    }
+    private function getParent($category)
+    {
+        $catsID = [];
+        if($category->parent_id != null)
+        {
+            $catsID[] = $category->parent_id;
+            $catsID = array_merge($catsID, $this->getParent($category->parentCategory));
+        }
+        return $catsID;
     }
 
     public function deleteCategory($id)
