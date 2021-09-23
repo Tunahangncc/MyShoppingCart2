@@ -471,4 +471,35 @@ return[
     ],
     //----
 
+    //Category Operations Page
+    'category operations page text' => [
+        'dashboard' => 'Dashboard',
+        'create category' => 'Create Category',
+        'category information' => 'Category Information',
+        'category name' => 'Category Name',
+        'select parent category' => 'Select Parent Category',
+        'categories table' => 'Categories Table',
+        'parent category' => 'Parent Category',
+        'subcategories' => 'Subcategories',
+        'edit category' => 'Edit Category',
+        'delete category' => 'Delete Category',
+        'main category' => 'Main Category',
+        'main categories' => 'Main Categories',
+        'select subcategory parent or select main category parent' => 'Select Subcategory Parent Or Select Main Category Parent',
+        'error1' => 'You cannot leave the category name blank.',
+        'success1' => 'Category created successfully',
+        'success2' => 'Category successfully deleted',
+    ],
+
+    'category operations edit page text' => [
+        'dashboard' => 'Dashboard',
+        'edit category' => 'Edit Category',
+        'category information' => 'Category Information',
+        'category name' => 'Category Name',
+        'select parent category' => 'Select Parent Category',
+        'go back' => 'Go Back',
+        'success1' => 'Category successfully updated',
+    ],
+    //----
+
 ];

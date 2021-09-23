@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductOperationsController;
 use App\Http\Controllers\AdminProfileSettingsController;
 use App\Http\Controllers\AdminWebsiteUsersController;
+use App\Http\Controllers\AdminCategoryOperationsController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
@@ -119,10 +120,17 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::get('product-operations/go-back', [AdminController::class, 'returnProductOperations'])->name('ReturnProductOperations');
 
-            //---
+            //Category Operations
             Route::get('category-operations', [AdminController::class, 'showCategoryOperationsPage'])->name('CategoryOperations');
 
+            Route::post('category-operations/create-category', [AdminCategoryOperationsController::class, 'createCategory'])->name('CategoryOperationsCreateCategory');
+
             Route::get('category-operations/edit-category/{id}', [AdminController::class, 'showSelectedCategoryEditPage'])->name('CategoryOperationsEdit');
+            Route::put('category-operations/edit-category/{id}', [AdminCategoryOperationsController::class, 'editCategory'])->name('CategoryOperationsEditPut');
+
+            Route::delete('category-operations/delete-category/{id}', [AdminCategoryOperationsController::class, 'deleteCategory'])->name('CategoryOperationsDeleteCategory');
+
+            Route::get('category-operations/go-back', [AdminController::class, 'returnCategoryOperations'])->name('ReturnCategoryOperations');
 
             Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminInformations;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ShoppingHistory;
 use App\Models\User;
@@ -98,12 +99,24 @@ class AdminController extends Controller
 
     public function showCategoryOperationsPage()
     {
-        return view('admins.category_operations');
+        \Session::put('page', \request()->fullUrl());
+        $categories = Category::query()->whereNotNull('parent_id')->orderBy('id')->paginate(10);
+        $selectItems = Category::all();
+
+        return view('admins.category_operations', [
+            'categories' => $selectItems,
+            'allCategory' => $categories,
+        ]);
     }
 
-    public function showSelectedCategoryEditPage()
+    public function showSelectedCategoryEditPage($id)
     {
-        return view('admins.category_operations_edit');
+        $category = Category::query()->with(['parentCategory'])->where('id', $id)->first();
+        $categories = Category::all();
+        return view('admins.category_operations_edit', [
+            'category' => $category,
+            'categories' => $categories,
+        ]);
     }
 
     public function showLoginPage()
@@ -112,6 +125,10 @@ class AdminController extends Controller
     }
 
     public function returnProductOperations()
+    {
+        return redirect(session('page'));
+    }
+    public function returnCategoryOperations()
     {
         return redirect(session('page'));
     }
