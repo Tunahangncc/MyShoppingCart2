@@ -15,14 +15,14 @@ class CreateAdminCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'users:create_admin_user';
+    protected $signature = 'users:create_admin';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create Admin';
+    protected $description = 'Create Admin !';
 
     /**
      * Create a new command instance.
@@ -41,31 +41,59 @@ class CreateAdminCommand extends Command
      */
     public function handle()
     {
-         $user = new User;
-         $user->name = 'Tunahan Genç';
-         $user->email = 'tunahangncc@gmail.com';
-         $user->password = bcrypt('Genc.118267');
-         $user->gender = 'male';
-         $user->slug = Str::slug('Tunahan Genç', '-');
-         $user->images = 'male_user_image.png';
-         $user->type = 'admin';
-         $user->created_at = now();
-         $user->updated_at = now();
-         $user->save();
+        $name = Str::slug($this->ask('Full Name'), '-');
+        $email = $this->ask('E-Mail');
 
-         $information = new AdminInformations;
-         $information->user_id = $user->id;
-         $information->type = Str::slug('Süper Admin', '-');
-         $information->status = 'Create Project';
-         $information->permissions = 'delete/create/add/update/ban';
-         $information->about = 'Empty';
-         $information->save();
+        $checkUser = User::query()->where('email', $email)->first();
+        if($checkUser == null)
+        {
+            $password = $this->secret('password');
+            $gender = Str::lower($this->ask('Gender (male / female)'));
 
-         $address = new Address;
-         $address->user_id = $user->id;
-         $address->neighbourhood = '---';
-         $address->district = '---';
-         $address->save();
+            $adminType = Str::slug($this->ask('Admin Type'), '-');
+            $status = $this->ask('Status');
+            $permissions = $this->ask('Permissions (exp:create/update/delete) (type:create, update, delete, add, ban)');
+
+            $checkAdminType = AdminInformations::query()->where('type', $adminType)->first();
+            if($checkAdminType != null && $checkAdminType->type = 'super-admin')
+            {
+                $this->error('You cannot create a second super admin');
+            }
+            else
+            {
+                $user = new User;
+                $user->name = $name;
+                $user->email = $email;
+                $user->password = bcrypt($password);
+                $user->gender = $gender;
+                $user->slug = Str::slug($name, '-');
+                $user->images = ($gender == 'male') ? 'male_user_image.png' : 'female_user_image.png';
+                $user->type = 'admin';
+                $user->created_at = now();
+                $user->updated_at = now();
+                $user->save();
+
+                $information = new AdminInformations;
+                $information->user_id = $user->id;
+                $information->type = Str::slug($adminType, '-');
+                $information->status = $status;
+                $information->permissions = $permissions;
+                $information->about = 'Empty';
+                $information->save();
+
+                $address = new Address;
+                $address->user_id = $user->id;
+                $address->neighbourhood = '---';
+                $address->district = '---';
+                $address->save();
+
+                $this->info($adminType.' admin created');
+            }
+        }
+        else
+        {
+            $this->error('This e-mail has an admin');
+        }
 
         return 0;
     }
