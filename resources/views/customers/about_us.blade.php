@@ -48,7 +48,9 @@
         <div class="short-information items-center">
             <div class="flex justify-center">
                 <div class="show-world-store-description p-20 w-full md:w-1/2">
-                    <img src="{{ asset('images/customer_images/general_images/about2.gif') }}" alt="" class="world-image rounded-t-lg transition duration-300">
+                    <div class="image-area">
+                        <img src="{{ asset('images/customer_images/general_images/about2.gif') }}" alt="" class="world-image rounded-t-lg transition duration-300">
+                    </div>
                     <div class="bg-white rounded-lg shadow-lg">
                         <div class="p-2 mb-1 cursor-pointer">
                             <h2 class="flex justify-center items-center font-bold mb-2 text-2xl text-purple-800">{{ __('messages.short information.world store') }}</h2>

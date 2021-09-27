@@ -9,12 +9,12 @@ function getProductsCount(): int
 
 function getAllProducts()
 {
-    return Product::query()->with(['user', 'brand', 'color', 'category'])->select('*')->paginate(12);
+    return Product::query()->with(['user', 'brand', 'color', 'category'])->paginate(12);
 }
 
 function productCount()
 {
-    return count(Product::query()->with(['user', 'brand', 'color', 'category'])->select('*')->get());
+    return count(Product::query()->with(['user', 'brand', 'color', 'category'])->get());
 }
 
 function getPaginateProducts($count)
