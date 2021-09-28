@@ -28,15 +28,12 @@
                             <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
                                 <h3 class="font-semibold text-lg leading-tight truncate">{{ __('messages.about content.about the website') }}</h3>
                                 <p class="mt-2">
-                            <span>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet animi consequuntur eius eos facere fuga id illo ipsum iusto laudantium officiis, praesentium quod rem repellat reprehenderit, vitae. Id, veritatis.
-                            </span>
                                     <span>
-                                Fuga laboriosam nam quasi quisquam repellendus repudiandae, saepe velit? Animi consequuntur ea modi, non quod tempore? Aliquid, commodi debitis eaque ex iure libero maiores modi praesentium quasi, rerum ut vero.
-                            </span>
+                                        {{ __('messages.about content.body') }}
+                                    </span>
                                 </p>
                                 <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
-                                    Tunahan Genç &bull; 50 minute ago
+                                    Tunahan Genç
                                 </p>
                             </div>
                         </div>

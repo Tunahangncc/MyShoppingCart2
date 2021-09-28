@@ -113,6 +113,7 @@ return[
     'about content' => [
         'who are we' => 'WHO ARE WE',
         'about the website' => 'About The Website',
+        'body' => "Hello, I'm Tunahan Genç. Let me convey the information that is curious about us as follows. We are an e-commerce site. Here is the privilege we offer you. You do not need to be a company to sell products, you can add your own product to our site from your profile.",
     ],
 
     'short information' => [
