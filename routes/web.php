@@ -12,7 +12,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShoppingBagController;
 use App\Http\Controllers\ContactMessageController;
-use App\Http\Controllers\LanguageController;
 
 //Admin Controller
 use App\Http\Controllers\AdminController;
@@ -21,9 +20,12 @@ use App\Http\Controllers\AdminProfileSettingsController;
 use App\Http\Controllers\AdminWebsiteUsersController;
 use App\Http\Controllers\AdminCategoryOperationsController;
 
+//Documentation Controller
+use App\Http\Controllers\DocumentationController;
+
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
-
+//Customer Route
 Route::group(['prefix' => 'customer'], function (){
     Route::name('customer')->group(function () {
         Route::get('home', [CustomerController::class, 'showHomePage'])->name('Home');
@@ -86,10 +88,9 @@ Route::group(['prefix' => 'customer'], function (){
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
-
-    Route::get('switch/language/{locale}', [LanguageController::class, 'setLanguage'])->name('SwitchLanguage');
 });
 
+//Admin Route
 Route::group(['prefix' => 'admin'], function () {
     Route::name('admin')->group(function () {
         Route::middleware(['isLogin'])->group(function () {
@@ -139,5 +140,12 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
         });
+    });
+});
+
+//Documentation Route
+Route::group(['prefix' => 'docs'], function () {
+    Route::name('docs')->group(function () {
+        Route::get('home', [DocumentationController::class, 'showHomePage'])->name('docsHomePage');
     });
 });
