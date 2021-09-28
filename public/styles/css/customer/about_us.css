@@ -17,6 +17,13 @@
     transform: rotate(160deg);
 }
 
+.show-world-store-description .image-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 892px) {
     .short-information{
         margin-top: 120px;

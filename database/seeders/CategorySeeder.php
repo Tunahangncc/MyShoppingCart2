@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CategoriesPivot;
 use App\Models\Category;
 use App\Models\RelatedCategory;
 use Illuminate\Database\Seeder;
@@ -18,76 +19,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        /*
-        $mainCategories = ['Electronic', 'Cosmetic', 'Book'];
-        $subCategories = [
-            '1'=>['4'=>'Computer', '5'=>'Camera', '6'=>'Phone'],
-            '2'=>['7'=>'Make-Up', '8'=>'Skin Care', '9'=>'Perfume'],
-            '3'=>['10'=>'Drama', '11'=>'Horror', '12'=>'Adventure']
-        ];
-        $grandCategories = [
-            '4'=>['13'=>'Desktop', '14'=>'Laptop'],
-            '5'=>['15'=>'Picture', '16'=>'Video'],
-            '6'=>['17'=>'Key Phone', '18'=>'Smart Phone']
-        ];
-
-        //Insert Main Category
-        for ($i=0; $i<count($mainCategories); $i++)
-        {
-            $category = new Category;
-            $category->name = $mainCategories[$i];
-            $category->slug = Str::slug($mainCategories[$i], '-');
-            $category->created_at = now();
-            $category->updated_at = now();
-            $category->save();
-
-            RelatedCategory::create([
-                'category_id' => $category->id,
-                'top_categories' => '0',
-            ]);
-        }
-
-        //Insert Sub Category
-        foreach ($subCategories as $topCategory => $subCategory)
-        {
-            foreach ($subCategory as $itemKey => $item)
-            {
-                $category = new Category;
-                $category->name = $item;
-                $category->slug = Str::slug($item, '-');
-                $category->parent_id = $topCategory;
-                $category->created_at = now();
-                $category->updated_at = now();
-                $category->save();
-
-                RelatedCategory::create([
-                    'category_id' => $itemKey,
-                    'top_categories' => $topCategory,
-                ]);
-            }
-        }
-
-        //Insert Grand Category
-        foreach ($grandCategories as $topCategory => $grandCategory)
-        {
-            foreach ($grandCategory as $itemKey => $item)
-            {
-                $category = new Category;
-                $category->name = $item;
-                $category->slug = Str::slug($item, '-');
-                $category->parent_id = $topCategory;
-                $category->created_at = now();
-                $category->updated_at = now();
-                $category->save();
-
-                RelatedCategory::create([
-                    'category_id' => $itemKey,
-                    'top_categories' => '1,'.$topCategory,
-                ]);
-            }
-        }
-        */
-
         $mainCategories = ['1'=>'Electronic', '2'=>'Cosmetic', '3'=>'Book'];
 
         $subCategories = [
@@ -191,5 +122,108 @@ class CategorySeeder extends Seeder
                 ]);
             }
         }
+
+        /*
+        $mainCategories = [1 => 'electronic', 2 => 'cosmetic', 3 => 'book'];
+        $subCategories = [
+            1 => [4 => 'computer', 5 => 'phone', 6 => 'camera'],
+            2 => [7 => 'skin-care', 8 => 'make-up', 9 => 'perfume'],
+            3 => [10 => 'drama', 11 => 'horror', 12 => 'action']
+        ];
+        $grandCategories = [
+            4 => [13 => 'laptop', 14 => 'desktop'],
+            5 => [15 => 'key phone', 16 => 'smart phone']
+        ];
+
+        //insert main category
+        foreach ($mainCategories as $key => $mainCategory)
+        {
+            Category::create([
+                'name' => Str::upper($mainCategory),
+                'slug' => Str::slug($mainCategory, '-'),
+                'parent_id' => null
+            ]);
+        }
+
+        //insert sub category
+        foreach ($subCategories as $key => $subCategory)
+        {
+            foreach ($subCategory as $itemKey => $item)
+            {
+                Category::create([
+                    'name' => Str::upper($item),
+                    'slug' => Str::slug($item, '-'),
+                    'parent_id' => $key,
+                ]);
+            }
+        }
+
+        //insert grand category
+        foreach ($grandCategories as $key => $grandCategory)
+        {
+            foreach ($grandCategory as $itemKey => $item)
+            {
+                Category::create([
+                    'name' => Str::upper($item),
+                    'slug' => Str::slug($item, '-'),
+                    'parent_id' => $key,
+                ]);
+            }
+        }
+
+        //Create Pivot
+
+        //Main Pivot
+        foreach ($mainCategories as $mainKey => $mainCategory)
+        {
+            //Firstly Subcategory
+            foreach ($subCategories as $subKey => $subCategory)
+            {
+                if($subKey == $mainKey)
+                {
+                    foreach ($subCategory as $subItemKey => $subItem)
+                    {
+                        CategoriesPivot::create([
+                            'category_id' => $mainKey,
+                            'sub_id' => $subItemKey,
+                        ]);
+                    }
+                }
+            }
+
+            //Secondly Grand Category
+            foreach ($grandCategories as $grandKey => $grandCategory)
+            {
+                foreach ($grandCategory as $grandItemKey => $grandItem)
+                {
+                    CategoriesPivot::create([
+                        'category_id' => $mainKey,
+                        'sub_id' => $grandItemKey,
+                    ]);
+                }
+            }
+        }
+
+        //Second Pivot
+        foreach ($subCategories as $subKey => $subCategory)
+        {
+            foreach ($subCategory as $subItemKey => $subItem)
+            {
+                foreach ($grandCategories as $grandKey => $grandCategory)
+                {
+                    if($subItemKey == $grandKey)
+                    {
+                        foreach ($grandCategory as $grandItemKey => $grandItem)
+                        {
+                            CategoriesPivot::create([
+                                'category_id' => $subItemKey,
+                                'sub_id' => $grandItemKey,
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+        */
     }
 }

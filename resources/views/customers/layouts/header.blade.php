@@ -39,6 +39,17 @@
                         <a href="{{ route('customerProducts') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.products') }}</a>
                         <a href="{{ route('customerAboutUs') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.about') }}</a>
                         <a href="{{ route('customerContact') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.contact') }}</a>
+                        <a href="#">
+                            <ul class="lang-list">
+                                <li class="drop-two">
+                                    <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Language - {{ Str::upper(App::getLocale()) }}<span><i class="fas fa-chevron-down ml-2"></i></span></a>
+
+                                    <ul class="menu-two">
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </a>
                     </div>
                 </div>
 

@@ -82,10 +82,12 @@
 
                         <p class="text-lg font font-thin mb-5">{{ $product->description }}</p>
 
-                        <a href="{{ route('customerProductDetails', ['id' => $product->id]) }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
-                            <i class="fas fa-search"></i>
-                            {{ __('messages.card text.show details') }}
-                        </a>
+                        <div class="flex justify-between">
+                            <a href="{{ route('customerProductDetails', ['id' => $product->id]) }}" class="show-product-details-button bg-gradient-to-r from-blue-400 to-blue-700 p-2 text-white rounded transition duration-300">
+                                <i class="fas fa-search"></i>
+                                {{ __('messages.card text.show details') }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             @endforeach

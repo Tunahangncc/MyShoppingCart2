@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $childrenCategories
  * @property-read int|null $children_categories_count
+ * @property-read Category|null $parentCategory
  */
 class Category extends Model
 {

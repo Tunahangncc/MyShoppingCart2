@@ -28,15 +28,12 @@
                             <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
                                 <h3 class="font-semibold text-lg leading-tight truncate">{{ __('messages.about content.about the website') }}</h3>
                                 <p class="mt-2">
-                            <span>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet animi consequuntur eius eos facere fuga id illo ipsum iusto laudantium officiis, praesentium quod rem repellat reprehenderit, vitae. Id, veritatis.
-                            </span>
                                     <span>
-                                Fuga laboriosam nam quasi quisquam repellendus repudiandae, saepe velit? Animi consequuntur ea modi, non quod tempore? Aliquid, commodi debitis eaque ex iure libero maiores modi praesentium quasi, rerum ut vero.
-                            </span>
+                                        {{ __('messages.about content.body') }}
+                                    </span>
                                 </p>
                                 <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
-                                    Tunahan Genç &bull; 50 minute ago
+                                    Tunahan Genç
                                 </p>
                             </div>
                         </div>
@@ -48,7 +45,9 @@
         <div class="short-information items-center">
             <div class="flex justify-center">
                 <div class="show-world-store-description p-20 w-full md:w-1/2">
-                    <img src="{{ asset('images/customer_images/general_images/about2.gif') }}" alt="" class="world-image rounded-t-lg transition duration-300">
+                    <div class="image-area">
+                        <img src="{{ asset('images/customer_images/general_images/about2.gif') }}" alt="" class="world-image rounded-t-lg transition duration-300">
+                    </div>
                     <div class="bg-white rounded-lg shadow-lg">
                         <div class="p-2 mb-1 cursor-pointer">
                             <h2 class="flex justify-center items-center font-bold mb-2 text-2xl text-purple-800">{{ __('messages.short information.world store') }}</h2>

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 //Customer Controller
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShoppingBagController;
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\LanguageController;
 
 //Admin Controller
 use App\Http\Controllers\AdminController;
@@ -83,6 +86,8 @@ Route::group(['prefix' => 'customer'], function (){
     });
 
     Route::get('sign-out', [AuthenticationController::class, 'signOut'])->name('SignOut');
+
+    Route::get('switch/language/{locale}', [LanguageController::class, 'setLanguage'])->name('SwitchLanguage');
 });
 
 Route::group(['prefix' => 'admin'], function () {

@@ -22,6 +22,13 @@ class CategoryController extends Controller
 
         $productsArray = [];
 
+        $findProducts = Product::query()->with(['user', 'brand', 'color', 'category'])->whereIn('category_id', $topCategoryArray)->get();
+        foreach ($findProducts as $findProduct)
+        {
+            array_push($productsArray, $findProduct);
+        }
+
+        /*
         foreach ($topCategoryArray as $item) {
             $findProducts = Product::query()->with(['user', 'brand', 'color', 'category'])->where('category_id', $item)->get();
 
@@ -29,7 +36,7 @@ class CategoryController extends Controller
             {
                 array_push($productsArray, $findProduct);
             }
-        }
+        }*/
 
         // Get current page form url e.x. &page=1
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
