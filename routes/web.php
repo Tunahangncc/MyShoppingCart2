@@ -142,10 +142,3 @@ Route::group(['prefix' => 'admin'], function () {
         });
     });
 });
-
-//Documentation Route
-Route::group(['prefix' => 'docs'], function () {
-    Route::name('docs')->group(function () {
-        Route::get('home', [DocumentationController::class, 'showHomePage'])->name('docsHomePage');
-    });
-});
