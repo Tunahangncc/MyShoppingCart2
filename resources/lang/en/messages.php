@@ -20,6 +20,7 @@ return[
             'products' => 'Products',
             'about' => 'About Us',
             'contact' => 'Contact',
+            'language' => 'Language',
         ],
 
         'authentication button' => [

@@ -1,3 +1,4 @@
+
 @media (max-width: 910px) {
     .main-nav{
         font-size: 14px;
@@ -9,28 +10,32 @@
 
 
 /*Social Bar*/
-.drop-two{
+.drop-two-nav{
     position: relative;
 }
 
-.menu-two{
+.menu-two-nav{
     position: absolute;
     list-style: none;
     left: 0;
     display: none;
-    background-color: #d6d6d8;
+    background-color: #f3f4f6;
     border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    z-index: 25;
 }
 
-.menu-two li{
+.menu-two-nav li{
     padding: 9px;
+    font-weight: bold;
 }
 
-.drop-two:hover > .menu-two{
+.drop-two-nav:hover > .menu-two-nav{
     display: block;
 }
 
-.menu-two li:hover{
+.menu-two-nav li:hover{
     background: orange;
 }
 
@@ -39,55 +44,7 @@ span{
     margin-left: 5px;
     transition: 0.3s;
 }
-.drop-one:hover span,
-.drop-two:hover span{
+
+.drop-two-nav:hover span{
     transform: rotate(-180deg);
-}
-
-@media (max-width: 1100px) {
-    #navbar{
-        margin: 0;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-@media (max-width: 950px) {
-    #navbar{
-        position: absolute;
-        top: 50px;
-        left: -100%;
-        text-align: left;
-        transition: 0.5s linear;
-    }
-
-    #navbar li{
-        display: block;
-    }
-
-    .menu-one{
-        position: relative;
-        box-shadow: none;
-        display: none;
-    }
-
-    .drop-one:hover > .menu-one{
-        display: block;
-    }
-
-    .menu-one ul{
-        text-align: left;
-    }
-
-    .menu-two{
-        position: relative;
-    }
-
-    .bars{
-        display: block;
-    }
-
-    #navbar.active{
-        left: 0;
-    }
 }

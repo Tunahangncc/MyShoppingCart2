@@ -25,6 +25,8 @@ use App\Http\Controllers\DocumentationController;
 
 Route::get('/', [GeneralController::class, 'redirectHome'])->name('RedirectHome');
 
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
 //Customer Route
 Route::group(['prefix' => 'customer'], function (){
     Route::name('customer')->group(function () {

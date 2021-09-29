@@ -20,6 +20,7 @@ return[
             'products' => 'Ürünler',
             'about' => 'Hakkımızda',
             'contact' => 'İletişim',
+            'language' => 'Dil',
         ],
 
         'authentication button' => [
