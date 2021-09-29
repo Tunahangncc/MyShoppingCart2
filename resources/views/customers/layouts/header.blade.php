@@ -41,11 +41,15 @@
                         <a href="{{ route('customerContact') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.contact') }}</a>
                         <a href="#">
                             <ul class="lang-list">
-                                <li class="drop-two">
-                                    <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Language - {{ Str::upper(App::getLocale()) }}<span><i class="fas fa-chevron-down ml-2"></i></span></a>
+                                <li class="drop-two-nav">
+                                    <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">{{ __('messages.navbar content text.links.language') }} - {{ Str::upper(App::getLocale()) }}<span><i class="fas fa-chevron-down ml-2"></i></span></a>
 
-                                    <ul class="menu-two">
-
+                                    <ul class="menu-two-nav">
+                                        @foreach(Config::get('languages') as $lang => $language)
+                                            @if($lang != App::getLocale())
+                                                <a href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
+                                            @endif
+                                        @endforeach
                                     </ul>
                                 </li>
                             </ul>
@@ -117,6 +121,24 @@
                         <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
                     </svg>
                     {{ __('messages.navbar content text.links.contact') }}
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="flex items-center">
+                    <ul class="lang-list">
+                        <li class="drop-two-nav">
+                            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900"><i class="fas fa-language"></i>{{ __('messages.navbar content text.links.language') }} - {{ Str::upper(App::getLocale()) }}<span><i class="fas fa-chevron-down ml-2"></i></span></a>
+
+                            <ul class="menu-two-nav">
+                                @foreach(Config::get('languages') as $lang => $language)
+                                    @if($lang != App::getLocale())
+                                        <a class="p-0" href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </a>
 
