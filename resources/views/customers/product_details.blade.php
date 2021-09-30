@@ -34,6 +34,7 @@
                             ₺{{ $selectedProduct->price }}
                         </div>
 
+                        <!--
                         <div class="mt-4 flex items-center">
                             <span class="text-blue-600 text-md font-semibold">{{ $selectedProduct->number_of_likes }} {{ __('messages.product details card.people liked') }}</span>
                             <span class="text-md text-gray-600 ml-5">
@@ -43,6 +44,7 @@
                                 </a>
                             </span>
                         </div>
+                        -->
 
                         <div class="mt-3">
                             <form action="{{ route('customerAddProductToCart', ['id' => $selectedProduct->id]) }}" method="POST" class="flex">

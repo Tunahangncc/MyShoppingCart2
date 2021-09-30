@@ -45,6 +45,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \App\Models\ShoppingHistory $shoppingHistory
  * @property-read \App\Models\AdminInformations $adminInformation
  * @property-read \App\Models\BanMessage|null $banMessage
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LikeProduct[] $likeProducts
+ * @property-read int|null $like_products_count
  */
 class User extends Authenticatable
 {

@@ -50,6 +50,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUserId($value)
  * @property-read \App\Models\ShoppingBag $shoppingBag
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LikeProduct[] $likeProducts
+ * @property-read int|null $like_products_count
  */
 class Product extends Model
 {

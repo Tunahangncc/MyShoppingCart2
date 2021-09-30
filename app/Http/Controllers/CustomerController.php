@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\LikeProduct;
 use App\Models\MessageBox;
 use App\Models\Product;
 use App\Models\ShoppingBag;
@@ -16,7 +17,7 @@ class CustomerController extends Controller
 {
     public function showHomePage()
     {
-        $topProducts = Product::query()->with(['category', 'user'])->select('*')->orderBy('number_of_likes', 'DESC')->take(4)->get();
+        $topProducts = Product::query()->with(['category'])->select('*')->orderBy('number_of_likes', 'DESC')->take(4)->get();
         $topUser = ShoppingHistory::query()->with(['user'])->orderBy('total_expenditure', 'DESC')->first();
 
         return view('customers.home', [

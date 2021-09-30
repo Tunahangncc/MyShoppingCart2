@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRegisterRequest;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,13 +65,21 @@ class AuthenticationController extends Controller
             if ($checkUser == null)
             {
                 $fullName = $request->firstName . ' ' . $request->lastName;
-                User::create([
-                    'name' => $fullName,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'gender' => $request->gender,
-                    'slug' => Str::slug($fullName, '-'),
-                    'images' => ($request->gender == 'male') ? 'male_user_image.png' : 'female_user_image.png'
+                $user = new User;
+                $user->name = $fullName;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+                $user->gender = $request->gender;
+                $user->slug = Str::slug($fullName, '-');
+                $user->images = ($request->gender == 'male') ? 'male_user_image.png' : 'female_user_image.png';
+                $user->created_at = now();
+                $user->updated_at = now();
+                $user->save();
+
+                Address::create([
+                    'user_id' => $user->id,
+                    'neighbourhood' => '---',
+                    'district' => '---',
                 ]);
 
                 return redirect()->back()->with(['success-message' => 'success1']);

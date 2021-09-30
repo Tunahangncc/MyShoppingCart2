@@ -65,3 +65,51 @@ function getMonthName($monthSlug)
 
     return $monthName;
 }
+
+function convertMonth($monthSlug)
+{
+    $monthName = "";
+    switch ($monthSlug)
+    {
+        case 'January':
+            $monthName = 'Jan';
+            break;
+        case 'February':
+            $monthName = 'Feb';
+            break;
+        case 'March':
+            $monthName = 'Mar';
+            break;
+        case 'April':
+            $monthName = 'Apr';
+            break;
+        case 'May':
+            $monthName = 'May';
+            break;
+        case 'June':
+            $monthName = 'June';
+            break;
+        case 'July':
+            $monthName = 'July';
+            break;
+        case 'August':
+            $monthName = 'Aug';
+            break;
+        case 'September':
+            $monthName = 'Sep';
+            break;
+        case 'October':
+            $monthName = 'Oct';
+            break;
+        case 'November':
+            $monthName = 'Nov';
+            break;
+        case 'December':
+            $monthName = 'Dec';
+            break;
+        default:
+            $monthName = '';
+    }
+
+    return $monthName;
+}

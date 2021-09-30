@@ -1,0 +1,39 @@
+/*Social Bar*/
+.drop-two-nav{
+    position: relative;
+}
+
+.menu-two-nav{
+    position: absolute;
+    list-style: none;
+    left: 0;
+    display: none;
+    background-color: #f3f4f6;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    z-index: 25;
+}
+
+.menu-two-nav li{
+    padding: 9px;
+    font-weight: bold;
+}
+
+.drop-two-nav:hover > .menu-two-nav{
+    display: block;
+}
+
+.menu-two-nav li:hover{
+    background: orange;
+}
+
+span{
+    display: inline-block;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+.drop-two-nav:hover span{
+    transform: rotate(-180deg);
+}

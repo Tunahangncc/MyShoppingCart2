@@ -41,6 +41,15 @@ return[
         'title' => 'Before you explore website',
         'body' => 'You are in the right place for a safe shopping. Are you a member of our site? In order not to get lost in this endless sea, you should introduce yourself to us, right?',
         'button' => 'Show Products',
+        'admin layout pages' => 'Admin Layout Pages',
+        'profile settings' => 'Profile Settings',
+        'website users' => 'Website Users',
+        'product and category operations page' => 'Product And Category Operations Page',
+        'product operation' => 'Product Operation',
+        'category operation' => 'Category Operation',
+        'sign out' => 'Sign Out',
+        'dashboard' => 'Dashboard',
+        'switch languages' => 'Switch Languages',
     ],
     //----
 
