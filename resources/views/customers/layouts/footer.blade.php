@@ -15,7 +15,7 @@
                     <div class="flex flex-wrap justify-between md:flex-row">
                         <h3 class="p-2 font-bold">{{ __('messages.about the website') }}</h3>
                         <p class="p-2 text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error nostrum odio quo reiciendis. Alias aspernatur assumenda beatae debitis eos esse expedita fuga fugit possimus provident, quis quos tenetur, vero voluptate!
+                            {{ __('messages.about content.body') }}
                         </p>
                     </div>
                 </div>

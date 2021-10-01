@@ -100,7 +100,7 @@ class AdminController extends Controller
     public function showCategoryOperationsPage()
     {
         \Session::put('page', \request()->fullUrl());
-        $categories = Category::query()->whereNotNull('parent_id')->orderBy('id')->paginate(10);
+        $categories = Category::query()->with(['childrenCategories', 'parentCategory'])->orderBy('id')->paginate(10);
         $selectItems = Category::all();
 
         return view('admins.category_operations', [
