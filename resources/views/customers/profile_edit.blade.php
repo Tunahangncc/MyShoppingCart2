@@ -16,6 +16,8 @@
     $i = 0;
     $fullName = Auth::user()->name;
     $nameArray = explode(' ', $fullName);
+
+    $dateTime = explode('/', Auth::user()->date_of_birth);
     ?>
 
     <div class="profile-content-area profile-edit-area flex justify-around">
@@ -42,7 +44,7 @@
                             class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
                             type="text"
                             id="user_first_name"
-                            value="@if(count($nameArray) > 2) @for($i=0; $i<(count($nameArray)-1); $i++) {{ $nameArray[$i] }} @endfor @else {{ $nameArray[0] }} @endif"
+                            value="@if(count($nameArray) > 2)@for($i=0; $i<(count($nameArray)-1); $i++){{ $nameArray[$i].' ' }}@endfor @else{{ $nameArray[0] }}@endif"
                             name="firstName"/>
                     </div>
 
@@ -102,21 +104,24 @@
                 <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
                     <div class="w-full px-2 md:w-1/3">
                         <label class="block mb-1" for="user_birthday_day">{{ __('messages.profile edit form text.day') }}</label>
-                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" min="1" max="31" id="user_birthday_day" value="1" name="day"/>
+                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" min="0" max="31" id="user_birthday_day" value="{{ $dateTime[0] }}" name="day"/>
                     </div>
 
                     <div class="w-full px-2 md:w-1/3">
                         <label class="block mb-1" for="user_birthday_month">{{ __('messages.profile edit form text.month') }}</label>
                         <select class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" name="month">
+                            <option value="{{ $dateTime[1] }}">{{ getMonthName($dateTime[1]) }}</option>
                             @foreach($months as $monthKey => $month)
-                                <option value="{{ $monthKey }}">{{ $month }}</option>
+                                @if(getMonthName($dateTime[1]) != $month)
+                                    <option value="{{ $monthKey }}">{{ $month }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
 
                     <div class="w-full px-2 md:w-1/3">
                         <label class="block mb-1" for="user_birthday_year">{{ __('messages.profile edit form text.year') }}</label>
-                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" min="1975" max="{{ date('Y') }}" id="user_birthday_year" value="1975" name="year"/>
+                        <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" min="0000" max="{{ date('Y') }}" id="user_birthday_year" value="{{ $dateTime[2] }}" name="year"/>
                     </div>
                 </div>
 

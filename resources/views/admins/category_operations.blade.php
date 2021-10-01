@@ -153,7 +153,11 @@
                                             {{ $category->name }}
                                         </td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                            {{ $category->parentCategory->name }}
+                                            @if($category->parentCategory != null)
+                                                {{ $category->parentCategory->name }}
+                                            @else
+                                                Main Category
+                                            @endif
                                         </td>
                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             @foreach ($category->childrenCategories as $childCategory)

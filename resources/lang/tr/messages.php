@@ -41,6 +41,15 @@ return[
         'title' => 'Web sitesini keşfetmeden önce',
         'body' => 'Güvenli bir alışveriş için doğru yerdesiniz. Sitemize üye misiniz? Bu uçsuz bucaksız denizde kaybolmamak için bize kendinizi tanıtmalısınız değil mi?',
         'button' => 'Ürünleri Gör',
+        'admin layout pages' => 'Yönetici Düzen Sayfaları',
+        'profile settings' => 'Profil Ayarları',
+        'website users' => 'Website Kullanıcıları',
+        'product and category operations page' => 'Ürün Ve Kategori İşlemleri Sayfası',
+        'product operation' => 'Ürün İşlemleri',
+        'category operation' => 'Kategori İşlemleri',
+        'sign out' => 'Çıkış Yap',
+        'dashboard' => 'Gösterge Paneli',
+        'switch languages' => 'Dili Değiştir',
     ],
     //----
 
@@ -332,7 +341,7 @@ return[
     //Dashboard Page
     'dashboard page text' => [
         'dashboard' => 'Gösterge Paneli',
-        'top users' => 'Pıpular Kullanıcı',
+        'top users' => 'Popular Kullanıcı',
         'user table' => [
             'user name' => 'Kullanıcı Adı',
             'user email' => 'Kullanıcı E-Postası',

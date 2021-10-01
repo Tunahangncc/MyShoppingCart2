@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ asset('styles/css/admin/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/admin/header.css') }}">
     @yield('specialCSS')
 
     @yield('title')
@@ -55,28 +56,28 @@
                 <hr class="my-4 md:min-w-full"/>
                 <!-- Heading -->
                 <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    Admin Layout Pages
+                    {{ __('messages.header content text.admin layout pages') }}
                 </h6>
                 <!-- Navigation -->
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                     <li class="items-center">
                         <a href="{{ route('adminDashboard') }}" class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
                             <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
-                            Dashboard
+                            {{ __('messages.header content text.dashboard') }}
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="{{ route('adminProfileSettings') }}" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                             <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
-                            Profile Settings
+                            {{ __('messages.header content text.profile settings') }}
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="{{ route('adminWebsiteUsers') }}" class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                             <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                            Website Users
+                            {{ __('messages.header content text.website users') }}
                         </a>
                     </li>
                 </ul>
@@ -87,21 +88,21 @@
                 <hr class="my-4 md:min-w-full"/>
                 <!-- Heading -->
                 <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    Product And Category Operations Page
+                    {{ __('messages.header content text.product and category operations page') }}
                 </h6>
                 <!-- Navigation -->
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                     <li class="items-center">
                         <a href="{{ route('adminProductOperations') }}" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                             <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-                            Product Operation
+                            {{ __('messages.header content text.product operation') }}
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="{{ route('adminCategoryOperations') }}" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                             <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                            Category Operation
+                            {{ __('messages.header content text.category operation') }}
                         </a>
                     </li>
                 </ul>
@@ -111,14 +112,36 @@
                 <hr class="my-4 md:min-w-full"/>
                 <!-- Heading -->
                 <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    Sign Out
+                    {{ __('messages.header content text.switch languages') }}
+                </h6>
+                <!-- Navigation -->
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                    <li class="drop-two-nav items-center">
+                        <a href="#" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">{{ __('messages.navbar content text.links.language') }} - {{ Str::upper(App::getLocale()) }}<span><i class="fas fa-chevron-down ml-2"></i></span></a>
+
+                        <ul class="menu-two-nav">
+                            @foreach(Config::get('languages') as $lang => $language)
+                                @if($lang != App::getLocale())
+                                    <a href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <!-- Divider -->
+                <hr class="my-4 md:min-w-full"/>
+                <!-- Heading -->
+                <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                    {{ __('messages.header content text.sign out') }}
                 </h6>
                 <!-- Navigation -->
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                     <li class="items-center">
                         <a href="{{ route('adminSignOut') }}" class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                             <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                            Sign Out
+                            {{ __('messages.header content text.sign out') }}
                         </a>
                     </li>
                 </ul>

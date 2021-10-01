@@ -130,8 +130,8 @@
                                 </svg>
                                 <span class="mt-2 text-base leading-normal cursor-pointer">{{ __('messages.profile add product form text.select a image') }}</span>
                             </label>
-                            <input type='file' class="hidden" name="productImage" id="grid-product-image"/>
-                            <img src="{{ asset('images/customer_images/general_images/product_no_image_selected.png') }}" alt="product picture" class="w-32 h-32 rounded">
+                            <input type='file' class="hidden" name="productImage" id="grid-product-image" onchange="readURL(this)"/>
+                            <img src="{{ asset('images/customer_images/general_images/product_no_image_selected.png') }}" alt="product picture" id="image" class="w-32 h-32 rounded">
                         </div>
                     </div>
                 </div>
@@ -157,4 +157,5 @@
 
 @section('SpecialJs')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="{{ asset('styles/js/customer/profile_add_product.js') }}" defer></script>
 @endsection

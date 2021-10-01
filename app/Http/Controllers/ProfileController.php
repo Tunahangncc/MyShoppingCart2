@@ -16,6 +16,7 @@ class ProfileController extends Controller
 {
     public function EditProfile(Request $request)
     {
+
         //Password
         if($request->newPassword != null)
         {
@@ -41,9 +42,9 @@ class ProfileController extends Controller
         }
 
         Auth::user()->email = $request->email;
-        Auth::user()->name = $request->firstName.' '.$request->lastName;
+        Auth::user()->name = trim($request->firstName).' '.$request->lastName;
         Auth::user()->gender = $request->gender;
-        Auth::user()->date_of_birth = $request->year.'/'.$request->day.'/'.$request->month;
+        Auth::user()->date_of_birth = $request->day.'/'.$request->month.'/'.$request->year;
         Auth::user()->slug = Str::slug(Auth::user()->name, '-');
         Auth::user()->images = $input['imageName'];
         Auth::user()->save();
