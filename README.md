@@ -25,3 +25,38 @@ For MacOs operating system, you can open the terminal with the help of finder.
 ```sh
 If you are not going to assign a data yourself and work with fake data, you can type `php artisan migrate:fresh --seed` in the terminal.
 ```
+- Finally, there is only one step left to do.
+-- Start the project on local host by typing `php artisan serve`
+
+## _#USER TYPE_
+There are two types of users in the project.
+- Admin
+- Customer
+
+### 1- Admin
+- If you are going to login as admin, you should type localhost:8888/admin/dashboard
+```sh
+host and port may vary according to you
+If you install valet you can also enter the project name by typing 'projectName.test/admin/dashboard'
+```
+- Admin user does not come automatically.
+- Open the terminal where you installed the project and enter your admin information by typing `php artisan users:create_admin` into it.
+
+### 2- Customer
+- If you are going to log in as a customer, you can enter the home page by typing localhost:8888.
+```sh
+host and port may vary according to you
+If you install valet you can also enter the project name by typing 'projectName.test/'
+```
+- Customer registration can be done in 3 ways
+-- After opening the site, you can create a member registration.
+-- You can create a record by typing `php artisan users:create_user` in the terminal where you installed the project.
+-- The command you type in the terminal will give you two options
+```sh
+1- Manual
+2- Automatic
+```
+> Manual: You must enter the new user's information
+> Automatic: Randomly fills in the new user's information
+
+**I hope you have fun while working, TUNAHAN GENÇ**
