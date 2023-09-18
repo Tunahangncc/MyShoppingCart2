@@ -10,171 +10,63 @@ use Faker\Factory as Faker;
 
 class CreateUserCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'users:create_user';
+    protected $signature = 'app:create-user {name?} {username?} {password?} {phone?} {email?} {is_admin?}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Created user !';
+    protected $description = 'Create User Command';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
-        $createType = Str::lower($this->ask('How would you like to create the user? (manual / automatic)'));
+        $name = $this->argument('name');
+        $password = $this->argument('username');
+        $username = $this->argument('password');
+        $phone = $this->argument('phone');
+        $email = $this->argument('email');
+        $isAdmin = $this->argument('is_admin') ?? 0;
 
-        if($createType == 'manual')
-        {
-            $name = $this->ask('Full Name');
-            $email = $this->ask('E-Mail');
-            $password = $this->secret('Password');
-            $gender = Str::lower($this->ask('Gender (male / female)'));
-
-            //Ask birthday
-            $askBirthDay = Str::lower($this->ask('Do you want to enter the birthday date? (yes / no)'));
-            $date = '';
-            if($askBirthDay == 'yes')
-            {
-                $day = $this->ask('Day');
-                $month = $this->ask('Month');
-                $year = $this->ask('Year');
-                $abbreviation = '';
-
-                switch ($month)
-                {
-                    case 'January':
-                    case 'january':
-                        $abbreviation = 'Jan';
-                        break;
-                    case 'February':
-                    case 'february':
-                        $abbreviation = 'Feb';
-                        break;
-                    case 'March':
-                    case 'march':
-                        $abbreviation = 'Mar';
-                        break;
-                    case 'April':
-                    case 'april':
-                        $abbreviation = 'Apr';
-                        break;
-                    case 'May':
-                    case 'may':
-                        $abbreviation = 'May';
-                        break;
-                    case 'June':
-                    case 'june':
-                        $abbreviation = 'June';
-                        break;
-                    case 'July':
-                    case 'july':
-                        $abbreviation = 'July';
-                        break;
-                    case 'August':
-                    case 'august':
-                        $abbreviation = 'Aug';
-                        break;
-                    case 'September':
-                    case 'september':
-                        $abbreviation = 'Sep';
-                        break;
-                    case 'October':
-                    case 'october':
-                        $abbreviation = 'Oct';
-                        break;
-                    case 'November':
-                    case 'november':
-                        $abbreviation = 'Nov';
-                        break;
-                    case 'December':
-                    case 'december':
-                        $abbreviation = 'Dec';
-                        break;
-                }
-
-                $date = $day.'/'.$abbreviation.'/'.$year;
-            }
-
-            //Ask address
-            $askAddress = Str::lower($this->ask('Do you want to enter your address information? (yes / no)'));
-            $neighbourhood = '';
-            $district = '';
-            if($askAddress == 'yes')
-            {
-                $neighbourhood = $this->ask('Enter your neighbourhood');
-                $district = $this->ask('Enter your district');
-            }
-
-            //Create User
-            $user = new User;
-            $user->name = $name;
-            $user->email = $email;
-            $user->password = bcrypt($password);
-            $user->gender = ($gender != 'male' || $gender != 'female') ? 'male' : 'female';
-            $user->date_of_birth = ($date == '') ? '00/Feb/0000' : $date;
-            $user->slug = Str::slug($name, '-');
-            $user->images = ($gender != 'male' || $gender != 'female') ? 'male_user_image.png' : 'female_user_image.png';
-            $user->created_at = now();
-            $user->updated_at = now();
-            $user->save();
-
-            //Create Address
-            Address::create([
-                'user_id' => $user->id,
-                'neighbourhood' => $neighbourhood,
-                'district' => $district,
-            ]);
-
-            $this->info('User successfully created');
+        if (! $name) {
+            $name = $this->ask('Name');
         }
-        else if($createType == 'automatic')
-        {
-            $faker = Faker::create();
-            $genderArray= array('male', 'female');
 
-            $firstName = $faker->firstName();
-            $lastName = $faker->lastName();
-            $fulName = $firstName.' '.$lastName;
-
-            $gender = $genderArray[rand(0, 1)];
-
-            $user = new User;
-            $user->name = $fulName;
-            $user->email = $faker->email();
-            $user->password = bcrypt('Deneme.123456');
-            $user->gender = $gender;
-            $user->slug = Str::slug($fulName, '-');
-            $user->images = ($gender == 'male') ? 'male_user_image.png' : 'female_user_image.png';
-            $user->created_at = now();
-            $user->updated_at = now();
-            $user->save();
-
-            Address::create([
-                'user_id' => $user->id
-            ]);
-
-            $this->info('User successfully created');
+        if (! $username) {
+            $username = Str::slug($this->ask('Username'), '_');
         }
-        return 0;
+
+        if (! $password) {
+            $password = $this->ask('Password');
+        }
+
+        if (! $phone) {
+            $phone = $this->ask('Phone Number');
+        }
+
+        if (! $email) {
+            $email = $this->ask('Email Address');
+        }
+
+        if ($this->isUsernameUnique($username)) {
+            $username = Str::slug($username.rand(0, 999999), '_');
+
+            $this->info('Username Available. Username assigned to you :'.$username);
+        }
+
+        try {
+            User::query()->create([
+                'name' => $name,
+                'username' => $username,
+                'password' => bcrypt($password),
+                'phone' => $phone,
+                'email' => $email,
+                'is_admin' => $isAdmin
+            ]);
+        } catch (\Exception $exception) {
+            $this->error($exception->getMessage());
+        }
+
+        $this->info('User Created !');
+    }
+
+    private function isUsernameUnique($username): bool
+    {
+        return User::query()->where('username', $username)->exists();
     }
 }
