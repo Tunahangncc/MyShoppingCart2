@@ -14,25 +14,8 @@
     <link href="{{ asset('css/customer/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/customer/tiny-slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/customer/style.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/customer/global.css') }}" rel="stylesheet">
     @yield('css')
-
-    <style>
-        .btn-login {
-            background: #f9bf29;
-            border: 1px solid #f9bf29;
-            padding: 5px 10px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bolder;
-            transition: 300ms ease-out;
-        }
-
-        .btn-login:hover {
-            background: #f8b810;
-            border-color: #f8b810;
-        }
-    </style>
 </head>
 <body>
 

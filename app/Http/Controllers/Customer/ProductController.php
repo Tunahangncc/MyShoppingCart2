@@ -9,20 +9,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function getProduct()
+    public function getList()
     {
         $inputs = \request()->all();
 
-        $model = Product::query();
-
-        // Not empty input
-        if (! empty($inputs['title']) ||
-            ! empty($inputs['subtitle']) ||
-            ! empty($inputs['min_price']) ||
-            ! empty($inputs['max_price']) ||
-            ! empty($inputs['created_by'])) {
-            $model = $this->filterData($model, $inputs);
-        }
+        $model = Product::query()->with([
+            'cloudFile',
+            'colors',
+        ]);
 
         $createdIds = $model->get()->pluck('created_by')->toArray();
         $users = User::query()->whereIn('id', $createdIds)->pluck('name', 'id')->toArray();
@@ -47,7 +41,12 @@ class ProductController extends Controller
 
     public function getDetail(Product $product)
     {
-        //
+        $productCloudFile = $product->cloudFile;
+
+        return view('customer.pages.product.detail', compact(
+            'product',
+            'productCloudFile'
+        ));
     }
 
     public function putDetail(Product $product)
@@ -60,28 +59,29 @@ class ProductController extends Controller
         //
     }
 
-    private function filterData($product, $inputs)
+    public function getSearchProduct()
     {
-        if (! empty($inputs['title'])) {
-            $product = $product->where('title', 'LIKE', '%'.$inputs['title'].'%');
+        $inputs = \request()->all();
+        $products = [];
+
+        // empty input
+        if (empty($inputs['title'])) {
+            return response()->json([
+                'status' => false,
+                'messages' => [
+                    'Search field required !'
+                ],
+                'data' => ['products' => $products]
+            ]);
         }
 
-        if (! empty($inputs['subtitle'])) {
-            $product = $product->where('subtitle', '%'.$inputs['subtitle'].'%');
-        }
+        $products = Product::query()->where('title', 'LIKE', $inputs['title'].'%')->get();
 
-        if (! empty($inputs['min_price'])) {
-            $product = $product->where('price', '>=', $inputs['min_price']);
-        }
-
-        if (! empty($inputs['max_price'])) {
-            $product = $product->where('price', '<=', $inputs['max_price']);
-        }
-
-        if (! empty($inputs['created_by'])) {
-            $product = $product->where('created_by', $inputs['created_by']);
-        }
-
-        return $product;
+        return response()->json([
+            'status' => true,
+            'data' => [
+                'products' => $products
+            ]
+        ]);
     }
 }

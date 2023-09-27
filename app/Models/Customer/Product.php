@@ -20,7 +20,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, CloudFile> $cloudFile
  * @property-read int|null $cloud_file_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Customer\Color> $colors
+ * @property-read int|null $colors_count
  * @property-read User $createdBy
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Customer\ShoppingBag> $shoppingBags
+ * @property-read int|null $shopping_bags_count
  * @method static \Database\Factories\Customer\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
@@ -56,6 +60,26 @@ class Product extends Model
     public function cloudFile()
     {
         return $this->hasMany(CloudFile::class, 'table_column_id', 'id');
+    }
+
+    public function colors()
+    {
+        return $this->belongsToMany(
+            Color::class,
+            'product_color_pivots',
+            'product_id',
+            'color_id'
+        );
+    }
+
+    public function shoppingBags()
+    {
+        return $this->belongsToMany(
+            ShoppingBag::class,
+            'product_shopping_bag_pivots',
+            'product_id',
+            'shopping_bag_id'
+        );
     }
     #endregion
 }

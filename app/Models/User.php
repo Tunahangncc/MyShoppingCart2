@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Customer\ShoppingBag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -38,6 +39,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, ShoppingBag> $shoppingBags
+ * @property-read int|null $shopping_bags_count
  * @mixin \Eloquent
  */
 class User extends Authenticatable
@@ -56,4 +59,16 @@ class User extends Authenticatable
         'is_admin',
         'permissions'
     ];
+
+    #region Relations
+    public function shoppingBags()
+    {
+        return $this->belongsToMany(
+            ShoppingBag::class,
+            'user_shopping_bag_pivots',
+            'user_id',
+            'shopping_bag_id'
+        );
+    }
+    #endregion
 }

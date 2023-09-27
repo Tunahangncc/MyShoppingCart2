@@ -16,13 +16,13 @@
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                @isset($user)
+                @if(\Illuminate\Support\Facades\Auth::check())
                     <li><a class="nav-link" href="#"><i class="fa fa-user"></i></a></li>
 
-                    <li><a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li><a class="nav-link" href="{{ route('customer.cart.list') }}"><i class="fa fa-shopping-bag"></i></a></li>
                 @else
-                    <li><a href="#" class="btn-login">Login</a></li>
-                @endisset
+                    <li><a href="{{ route('customer.login') }}" class="btn-login">Login</a></li>
+                @endif
             </ul>
         </div>
     </div>

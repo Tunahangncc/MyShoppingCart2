@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminCategoryOperationsController;
 
 use App\Http\Controllers\Customer\IndexController as CustomerIndexController;
 use App\Http\Controllers\Customer\ProductController as CustomerProductController;
+use App\Http\Controllers\Customer\ShoppingBagController as CustomerShoppingBagController;
 
 //Documentation Controller
 // use App\Http\Controllers\DocumentationController;
@@ -31,19 +32,42 @@ Route::get('/', function () {
 });
 
 Route::prefix('customer')->as('customer.')->group(function () {
-    // Index Controller
+    // Index Routes
     Route::controller(CustomerIndexController::class)->group(function () {
+        // Home page
         Route::get('home', [
             'as' => 'home',
             'uses' => 'getHome'
         ]);
+
+        // Login - Register Route
+        Route::get('login', [
+            'as' => 'login',
+            'uses' => 'getLogin'
+        ]);
+        Route::post('login', [
+            'uses' => 'postLogin'
+        ]);
+
+        Route::get('logout', [
+            'as' => 'logout',
+            'uses' => 'getLogout'
+        ]);
+
+        Route::get('register', [
+            'as' => 'register',
+            'uses' => 'getRegister'
+        ]);
+        Route::post('register', [
+            'uses' => 'postRegister'
+        ]);
     });
 
-    // Product Controller
+    // Product Routes
     Route::prefix('products')->as('products.')->controller(CustomerProductController::class)->group(function () {
         Route::get('list', [
             'as' => 'list',
-            'uses' => 'getProduct',
+            'uses' => 'getList',
         ]);
 
         Route::get('create', [
@@ -66,6 +90,27 @@ Route::prefix('customer')->as('customer.')->group(function () {
         Route::delete('delete/{product}', [
             'as' => 'delete',
             'uses' => 'getDelete'
+        ]);
+    });
+
+    // Shopping Bag Routes
+    Route::prefix('cart')->as('cart.')->middleware(['isLogin'])->controller(CustomerShoppingBagController::class)->group(function () {
+        Route::get('list', [
+            'as' => 'list',
+            'uses' => 'getCart'
+        ]);
+
+        Route::post('add', [
+            'as' => 'add',
+            'uses' => 'postAddCart'
+        ]);
+    });
+
+    // Json
+    Route::prefix('json')->as('json.')->group(function () {
+        Route::get('search-product', [
+            'as' => 'search_product',
+            'uses' => 'App\Http\Controllers\Customer\ProductController@getSearchProduct'
         ]);
     });
 });
