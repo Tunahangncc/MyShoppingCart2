@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/telescope": "^4.6",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.4",
         "stidges/laravel-country-flags": "^2.0"
     },
     "require-dev": {
@@ -32,13 +33,7 @@
         },
 
         "files": [
-            "app/Helpers/ProductHelper.php",
-            "app/Helpers/CategoryHelper.php",
-            "app/Helpers/ShoppingBagHelper.php",
-            "app/Helpers/AddressHelper.php",
-            "app/Helpers/BrandHelper.php",
-            "app/Helpers/CustomerHelper.php",
-            "app/Helpers/ColorHelper.php"
+            "app/Helpers/helpers.php"
         ]
     },
     "autoload-dev": {

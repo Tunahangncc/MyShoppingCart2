@@ -17,16 +17,8 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check())
-        {
-            if(Auth::user()->type == 'customer')
-            {
-                return redirect()->route('customerHome');
-            }
-            else if(Auth::user()->type == 'admin')
-            {
-                return redirect()->route('adminDashboard');
-            }
+        if (! Auth::check()) {
+            return redirect()->route('customer.home');
         }
 
         return $next($request);
